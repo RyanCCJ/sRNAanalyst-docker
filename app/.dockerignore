@@ -1,0 +1,12 @@
+.git*
+data
+media/*
+src/toolkit/bowtie*
+src/toolkit/FastQC*
+src/toolkit/yq
+src/toolkit/sratoolkit*
+src/toolkit/sRNAanalyst/__pycache__
+sRNA_tool/__pycache__
+sRNA_tool/migrations/__pycache__
+sRNAanalyst/__pycache__
+db.sqlite3

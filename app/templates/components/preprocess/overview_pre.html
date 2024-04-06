@@ -1,0 +1,152 @@
+<!-- overview_pre.html -->
+{% load static %}
+
+<div class="row toggle" id="overview-pre" style="display:none;">
+
+  <div class="pagetitle">
+    <h1>Overview</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">Preprocess</li>
+        <li class="breadcrumb-item active">Overview</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- Instruction -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Introduction</h5>
+        <p>This page assists in conducting upstream analysis, where raw experimental data can be <b>trimmed</b>,
+          <b>normalized</b>, <b>mapped</b> as needed, and compared to reference data to create intermediary files
+          suitable for downstream analysis.
+        </p>
+        <p>You can use the <b>Workflow</b> tool to configure and process data all at once or use individual tools within
+          the <b>Utility</b> section for custom processing of specific datasets or references.</p>
+        <p>Your current temporary User ID is: <b id="show-id">{{ JOB_ID }}</b>. This website will remember your analysis
+          results for this session. If you want to view the results next time, please enter your User ID below, and the
+          website will display them again.</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Load Result</h5>
+        <p>If you have previously visited this website, you can enter your previous User ID to retrieve the results.
+          Please note that due to capacity limitations, we will retain your data for only <b>3 days</b>. If you have
+          larger computational requirements, please use our <a href="#">Docker version.</a></p>
+        <div class="d-flex">
+          <form>
+            <label class="form-label fw-bold col-form-label-sm mb-0 ms-1">User ID:</label>
+            <input type="text" class="form-control" placeholder="Enter User ID here..." id="id" required>
+          </form>
+          <button type="button" class="btn btn-sm submit ms-2 mt-auto mb-1">
+            <div class="d-flex align-items-center">
+              Enter <i class="bi bi-send ms-1"></i>
+              <span class="spinner-border spinner-border-sm ms-1 text-white hide" role="status"></span>
+            </div>
+          </button>
+          <small class="ms-4 mt-auto">
+            <div class="d-flex align-items-center">
+              Load Example:
+              <button class="btn btn-sm basic-color" id="load-example">
+                22G-RNA NGS Workflow <i class="bi bi-arrow-clockwise"></i>
+              </button><br>
+            </div>
+            <span class='text-danger'>When you load example, the current working session will be replaced.</span>
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Analysis -->
+  <!--div class="row">
+    <div class="col-12 density" style="display:none;">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Density Distribution</h5>
+          <div class="row">
+            <b class="col-12 mb-2">Setting</b>
+            <p class="col-12" id="config_block"></p>
+            <b class="col-12">Result</b>
+          </div>
+          <div class="mb-2" id="csv_block"></div>
+          <div class="row" id="img_block"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 metagene" style="display:none;">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Metagene Distribution</h5>
+          <div class="row">
+            <b class="col-12 mb-2">Setting</b>
+            <p class="col-12" id="config_block"></p>
+            <b class="col-12">Result</b>
+          </div>
+          <div class="mb-2" id="csv_block"></div>
+          <div class="row" id="img_block"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 boundary" style="display:none;">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Head & Tail Distribution</h5>
+          <div class="row">
+            <b class="col-12 mb-2">Setting</b>
+            <p class="col-12" id="config_block"></p>
+            <b class="col-12">Result</b>
+          </div>
+          <div class="mb-2" id="csv_block"></div>
+          <div class="row" id="img_block"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 codon" style="display:none;">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Start & Stop Codon Distribution</h5>
+          <div class="row">
+            <b class="col-12 mb-2">Setting</b>
+            <p class="col-12" id="config_block"></p>
+            <b class="col-12">Result</b>
+          </div>
+          <div class="mb-2" id="csv_block"></div>
+          <div class="row" id="img_block"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 fold" style="display:none;">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Fold Change</h5>
+          <div class="row">
+            <b class="col-12 mb-2">Setting</b>
+            <p class="col-12" id="config_block"></p>
+            <b class="col-12">Result</b>
+          </div>
+          <div class="mb-2" id="csv_block"></div>
+          <div class="row" id="img_block"></div>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 scatter" style="display:none;">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Scatter Plot</h5>
+          <div class="row">
+            <b class="col-12 mb-2">Setting</b>
+            <p class="col-12" id="config_block"></p>
+            <b class="col-12">Result</b>
+          </div>
+          <div class="mb-2" id="csv_block"></div>
+          <div class="row" id="img_block"></div>
+        </div>
+      </div>
+    </div>
+  </div-->
+</div>

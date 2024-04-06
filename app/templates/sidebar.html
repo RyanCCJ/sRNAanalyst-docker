@@ -1,0 +1,131 @@
+<!-- sidebar.html -->
+{% load static %}
+
+<aside id="sidebar" class="sidebar" hide>
+  <ul class="sidebar-nav" id="sidebar-nav">
+
+    <!-- Preprocess -->
+    <li class="nav-item hide preprocess">
+      <a class="nav-link toggle_control" id="nav_overview-pre">
+        <i class="bi bi-grid"></i>
+        <span>Overview</span>
+      </a>
+    </li>
+    <li class="nav-item hide preprocess">
+      <!--a class="nav-link" data-bs-target="#preprocess-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-filter-left"></i><span>Preprocess</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a-->
+      <ul id="preprocess-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+        <li class="nav-heading">Toolbox</li>
+        <li>
+          <button class="toggle_control" id="sidebar_workflow">
+            <i class="bi bi-circle"></i>
+            <i class="bi bi-check-circle"></i>
+            <span class="spinner-grow" role="status"></span>
+            <span>Workflow</span>
+          </button>
+        </li>
+        <li>
+          <button class="toggle_control" id="sidebar_utility">
+            <i class="bi bi-circle"></i>
+            <i class="bi bi-check-circle"></i>
+            <span class="spinner-grow" role="status"></span>
+            <span>Hepler Tool</span>
+          </button>
+        </li>
+      </ul>
+    </li>
+
+    <!-- Analysis -->
+    <li class="nav-item hide analysis">
+      <a class="nav-link toggle_control" id="nav_overview-ana">
+        <i class="bi bi-grid"></i>
+        <span>Overview</span>
+      </a>
+    </li>
+    <li class="nav-item hide analysis">
+      <!--a class="nav-link" data-bs-target="#analysis-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-bar-chart"></i><span>Analysis</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a-->
+      <ul id="analysis-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+        
+        <li class="nav-heading">Input</li>
+        <li>
+          <button class="toggle_control" id="sidebar_dataset">
+            <i class="bi bi-circle"></i>
+            <i class="bi bi-check-circle"></i>
+            <span class="spinner-grow" role="status"></span>
+            <span>Dataset</span>
+          </button>
+        </li>
+        <li>
+          <button class="toggle_control" id="sidebar_group">
+            <i class="bi bi-circle"></i>
+            <i class="bi bi-check-circle"></i>
+            <span class="spinner-grow" role="status"></span>
+            <span>Target List</span>
+          </button>
+        </li>
+
+        <li class="nav-heading">Toolbox</li>
+        <li>
+          <button class="toggle_control" id="sidebar_browser">
+            <i class="bi bi-circle"></i>
+            <i class="bi bi-check-circle"></i>
+            <span class="spinner-grow" role="status"></span>
+            <span>Browser</span>
+          </button>
+        </li>
+        <li>
+          <button class="toggle_control" id="sidebar_density">
+            <i class="bi bi-circle"></i>
+            <i class="bi bi-check-circle"></i>
+            <span class="spinner-grow" role="status"></span>
+            <span>Density</span>
+          </button>
+        </li>
+        <li>
+          <button class="toggle_control" id="sidebar_metagene">
+            <i class="bi bi-circle"></i>
+            <i class="bi bi-check-circle"></i>
+            <span class="spinner-grow" role="status"></span>
+            <span>Metagene</span>
+          </button>
+        </li>
+        <li>
+          <button class="toggle_control" id="sidebar_boundary">
+            <i class="bi bi-circle"></i>
+            <i class="bi bi-check-circle"></i>
+            <span class="spinner-grow" role="status"></span>
+            <span>Head & Tail</span>
+          </button>
+        </li>
+        <li>
+          <button class="toggle_control" id="sidebar_codon">
+            <i class="bi bi-circle"></i>
+            <i class="bi bi-check-circle"></i>
+            <span class="spinner-grow" role="status"></span>
+            <span>Start & Stop Codon</span>
+          </button>
+        </li>
+        <li>
+          <button class="toggle_control" id="sidebar_fold">
+            <i class="bi bi-circle"></i>
+            <i class="bi bi-check-circle"></i>
+            <span class="spinner-grow" role="status"></span>
+            <span>Fold Change</span>
+          </button>
+        </li>
+        <li>
+          <button class="toggle_control" id="sidebar_scatter">
+            <i class="bi bi-circle"></i>
+            <i class="bi bi-check-circle"></i>
+            <span class="spinner-grow" role="status"></span>
+            <span>Scatter Plot</span>
+          </button>
+        </li>
+      </ul>
+    </li>
+
+  </ul>
+</aside>

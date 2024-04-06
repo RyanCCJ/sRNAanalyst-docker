@@ -1,0 +1,316 @@
+<!-- browser.html -->
+{% load static %}
+
+<div class="row toggle" id="browser" style="display:none;">
+
+  <div class="pagetitle">
+    <h1>Browser</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">Analysis</li>
+        <li class="breadcrumb-item active">Browser</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- instruction -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Transcriptome Browser</h5>
+        <div class="row">
+          <div class="col-md-6">
+            <img src="/sRNAanalyst_static/img/Browser.png" class="img-fluid rounded-start">
+          </div>
+          <div class="col-md-6">
+            <p>Transcriptome browser is presented in tabular or graphical form, showing sRNA variations across different
+              transcripts, including alignment positions and mutation details. You can input the sequence, annotation,
+              UTR, and Exon intervals of the target RNA for further comparisons.
+            </p>
+            <p><b>Note:</b> If you want to examine mismatch information, the input dataset should include the
+              <b>CIGAR</b> field. You can use our <a href="#" class="fw-bold to_workflow">Preprocessing Workflow</a> to
+              generate these fields.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Warning -->
+  <div class="col-12 single-data-warning">
+    <div class="alert alert-warning alert-dismissible fade show mt-3 no-data-alert" role="alert">
+      <i class="bi bi-exclamation-triangle me-1"></i>
+      Please input a valid data for browser.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+
+  <!-- Settings -->
+  <div class="col-md-12 single-data" id="config">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Settings</h5>
+        <ul>
+          <li><b>Reference 1:</b> This can be used to observe sequence alignment. You can use either a
+            <a href="/sRNAanalyst_static/example/mRNA_WS285.fa" download>Fasta file</a> or <a
+              href="/sRNAanalyst_static/example/mRNA_WS285.csv" download>CSV file</a> (with fields named ref_id
+            and ref_seq). If you wish to include additional information (such as Gene ID), you can import it using Fasta
+            annotation or directly include it in a CSV file.
+          </li>
+          <li class="mt-2"><b>Reference 2:</b> This can be used to observe different regions, including UTR, CDS
+            positions, and Exon positions. Necessary fields include ref_id, region, init_pos, and end_pos. Please refer
+            to our example for guidance.</li>
+        </ul>
+        <p class="ms-3">Note: At least one of references should be present to generate the graphical view correctly. It
+          is recommended to use Reference 1.</p>
+        <form class="row g-3 px-3">
+          <div class="col-sm-6">
+            <label class="form-label fw-bold col-form-label-sm mb-0">Reference 1</label>
+            <span class="form-text ms-1">
+              <i class="bi bi-info-circle-fill"></i> Example:
+              <a href="/sRNAanalyst_static/example/mRNA_WS285.fa" download>
+                mRNA_WS285.fa <i class="bi bi-download"></i>
+              </a>
+            </span>
+            <div class="input-group">
+              <label type="button" class="btn upload-btn" id="upload-btn">
+                <input type="file" class="hide" id="reference1">
+                Choose File
+              </label>
+              <div class="input-group-text" id="reference-text1" style="background-color: white; border-right:none;">No file chosen</div>
+              <input type="text" class="form-control" style="background-color: white; border-left:none;" disabled>
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label fw-bold col-form-label-sm mb-0">Reference 2 (Optional)</label>
+            <span class="form-text ms-1">
+              <i class="bi bi-info-circle-fill"></i> Example:
+              <a href="/sRNAanalyst_static/example/mRNA_WS285_region.csv" download>
+                mRNA_region.csv <i class="bi bi-download"></i>
+              </a>
+            </span>
+            <div class="input-group">
+              <label type="button" class="btn upload-btn" id="upload-btn">
+                <input type="file" class="hide" id="reference2">
+                Choose File
+              </label>
+              <div class="input-group-text" id="reference-text2" style="background-color: white; border-right:none;">No file chosen</div>
+              <input type="text" class="form-control" style="background-color: white; border-left:none;" disabled>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Submit -->
+  <div class="col-12 mb-3 position-relative single-data">
+    <button type="button" class="btn submit position-absolute top-50 start-50 translate-middle" id="submit_browser">
+      Submit <i class="bi bi-send"></i>
+    </button>
+    <button type="button" class="btn submit_loading position-absolute top-50 start-50 translate-middle hide"
+      id="submit_loading_browser" disabled>
+      <span class="spinner-border spinner-border-sm" role="status"></span>
+      <span id="loading_time"></span>
+    </button>
+  </div>
+
+  <!-- Result -->
+  <div class="col-12 mt-3 result" id="result_browser">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Target RNA</h5>
+        <small>
+          <span class="d-flex"><b>Dataset:</b>
+            <div class="ms-2" id="target_data"></div>
+          </span>
+          <div id="target_list_div">
+            <span class="d-flex">
+              <b>Target List:</b>
+              <div class="ms-2" id="target_list"></div>
+            </span>
+          </div>
+        </small>
+        <div style="overflow:auto;" class="mt-3">
+          <small id="ref_table_parent">
+            <table class="table table-sm datatable table-striped table-hover compact cell-border" id="ref_table">
+            </table>
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detail -->
+  <div class="col-12 mt-3 result" id="detail_browser">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title me-2">sRNA Target Site</h5>
+        <div class="accordion" id="accordionPanelsStayOpenExample">
+
+          <!-- Site Graph -->
+          <div class="accordion-item" id="accordion_3">
+            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseTwo">
+                <b class="d-block w-100 text-center">
+                  Graphical View
+                </b>
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show"
+              aria-labelledby="panelsStayOpen-headingTwo">
+              <div class="accordion-body">
+                <!-- Graph -->
+                <table class="table table-bordered" id="track_chart">
+                  <tbody id="graphical_view">
+                    <!-- Site 1 -->
+                    <tr id="site1_table">
+                      <td>
+                        <h5 class="hint_text hide">Control</h5>
+                        <br>
+                        <div class="hint SITE p-2"></div><small class="fw-bold mx-1">Site</small>
+                      </td>
+                      <td class="m-0 p-0">
+                        <div id="site1"></div>
+                      </td>
+                    </tr>
+                    <!-- Read Count 1 -->
+                    <tr id="count1_table">
+                      <td>
+                        <h5 class="hint_text hide">Control</h5>
+                        <br>
+                        <div class="hint RC p-2"></div><small class="mx-1 fw-bold">Read Count</small>
+                      </td>
+                      <td class="m-0 p-0">
+                        <div id="count1"></div>
+                      </td>
+                    </tr>
+                    <!-- Region -->
+                    <tr id="region">
+                      <td>
+                        <span class="d-flex flex-row">
+                          <div class="hint CDS p-2"></div><small class="fw-bold mx-1">CDS</small>
+                        </span>
+                        <span class="d-flex flex-row mt-1">
+                          <div class="hint UTR ALL p-2"></div><small class="ALL fw-bold mx-1">UTR</small>
+                        </span>
+                        <span class="d-flex flex-row mt-1">
+                          <div class="hint EXON1 p-2"></div><small class="fw-bold mx-1">EXON</small>
+                        </span>
+                        <span class="d-flex flex-row mt-1">
+                          <div class="hint EXON2 p-2"></div><small class="fw-bold mx-1">EXON</small>
+                        </span>
+                      </td>
+                      <td class="m-0 p-0" style="width:80vw;">
+                        <div id="UTR_bar"></div>
+                        <div id="EXON_bar"></div>
+                      </td>
+                    </tr>
+                    <!-- Read Count 2 -->
+                    <tr id="count2_table">
+                      <td>
+                        <h5 class="hint_text hide">Mutant</h5>
+                        <br>
+                        <div class="hint RC p-2"></div><small class="mx-1 fw-bold">Read Count</small>
+                      </td>
+                      <td class="m-0 p-0">
+                        <div id="count2"></div>
+                      </td>
+                    </tr>
+                    <!-- Site 2 -->
+                    <tr id="site2_table">
+                      <td>
+                        <h5 class="hint_text hide">Mutant</h5>
+                        <br>
+                        <div class="hint SITE p-2"></div><small class="fw-bold mx-1">Site</small>
+                      </td>
+                      <td class="m-0 p-0">
+                        <div id="site2"></div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Site Table (WT) -->
+          <div class="accordion-item" id="accordion_1">
+            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                aria-controls="panelsStayOpen-collapseOne">
+                <b class="d-block w-100 text-center" id="acc_text_1">
+                  Table View ( Control )
+                </b>
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
+              aria-labelledby="panelsStayOpen-headingOne">
+              <div class="accordion-body">
+                <!-- hint -->
+                <small class="d-flex justify-content-between mb-2">
+                  <b>Transcript:<span class="text-danger mx-1 transcript_name"></span></b>
+                  <span>
+                    <div class="hint M p-2"></div><b class="mx-1">Mismatch</b>
+                    <div class="hint D p-2"></div><b class="mx-1">Deletion</b>
+                    <div class="hint I p-2"></div><b class="mx-1">Insertion</b>
+                    <div class="hint S p-2"></div><b class="mx-1">Boundary Clip</b>
+                  </span>
+                </small>
+                <!-- table -->
+                <div style="overflow:auto;">
+                  <small>
+                    <table class="table table-sm datatable table-striped table-hover compact cell-border"
+                      id="site_table">
+                    </table>
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Site Table (Mut) -->
+          <div class="accordion-item" id="accordion_2">
+            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                aria-controls="panelsStayOpen-collapseThree">
+                <b class="d-block w-100 text-center" id="acc_text_2">
+                  Table View ( Mutant )
+                </b>
+              </button>
+            </h2>
+            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+              aria-labelledby="panelsStayOpen-headingThree">
+              <div class="accordion-body">
+                <!-- hint -->
+                <small class="d-flex justify-content-between mb-2">
+                  <b>Transcript:<span class="text-danger mx-1 transcript_name"></span></b>
+                  <span>
+                    <div class="hint M p-2"></div><b class="mx-1">Mismatch</b>
+                    <div class="hint D p-2"></div><b class="mx-1">Deletion</b>
+                    <div class="hint I p-2"></div><b class="mx-1">Insertion</b>
+                    <div class="hint S p-2"></div><b class="mx-1">Boundary Clip</b>
+                  </span>
+                </small>
+                <!-- table -->
+                <div style="overflow:auto;">
+                  <small>
+                    <table class="table table-sm datatable table-striped table-hover" id="site_table_mut">
+                    </table>
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

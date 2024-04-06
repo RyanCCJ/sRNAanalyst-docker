@@ -1,0 +1,65 @@
+<!-- stylesheet-scatterplot.html -->
+
+<div class="col-sm-6">
+  <label class="form-label fw-bold col-form-label-sm mb-0">Scale</label>
+  <select class="form-select" name="scale" id="scale">
+    <option value="normal" selected>normal</option>
+    <option value="log2">log2</option>
+    <option value="log10">log10</option>
+  </select>
+</div>
+
+<div class="col-sm-6 condition4">
+  <label class="form-label fw-bold col-form-label-sm mb-0" data-bs-toggle="tooltip" data-bs-placement="top"
+    title="If it's 'multi-data to multi-filter', determine which field should be set as hue.">
+    Segmentation
+  </label>
+  <select class="form-select" name="segmentation" id="segmentation">
+    <option value="data" selected>data</option>
+    <option value="filter">list</option>
+  </select>
+</div>
+
+<div class="col-sm-2">
+  <label class="form-label fw-bold col-form-label-sm mb-0" data-bs-toggle="tooltip" data-bs-placement="right"
+    title="Add the p-value threshold for differential expression genes.">
+    DEG
+  </label>
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" id="deg">
+  </div>
+</div>
+
+<div class="col-sm-2 condition4">
+  <label class="form-label fw-bold col-form-label-sm mb-0" data-bs-toggle="tooltip" data-bs-placement="right"
+    title="Merge all figures if it's 'multi-data to multi-filter'.">
+    Merge
+  </label>
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" id="merge">
+  </div>
+</div>
+
+<div class="col-sm-2">
+  <label class="form-label fw-bold col-form-label-sm mb-0" data-bs-toggle="tooltip" data-bs-placement="right"
+    title="Add values which not in filters">
+    Show Others
+  </label>
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" id="show-others">
+  </div>
+</div>
+
+<!-- Take Off -->
+<!--div class="row mb-3" style="display:none;">
+  <label class="col-sm-3 col-form-label" data-bs-toggle="tooltip" data-bs-placement="top"
+    title="Determine which condition should be set as x-axis">
+    X axis
+  </label>
+  <div class="col-sm-9">
+    <select class="form-select" name="x-axis" id="x-axis">
+      <option value="1" selected>wild-type</option>
+      <option value="2">mutant</option>
+    </select>
+  </div>
+</div-->

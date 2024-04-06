@@ -1,0 +1,222 @@
+Density:
+  run: true
+  data:
+  - dataframe: null
+    index: 1
+    upload: true
+    name: WAGO1_IP_WT
+  - dataframe: null
+    index: 2
+    upload: true
+    name: WAGO1_IP_PRG1_MUT
+  columns:
+  - ALL
+  - UTR5
+  - CDS
+  - UTR3
+  reference:
+    dataframe: null
+    name: mRNA_WS285_3region.csv
+  csv_path: media/example/
+Metagene:
+  run: true
+  data:
+  - dataframe: null
+    index: 1
+    upload: true
+    name: WAGO1_IP_WT
+  - dataframe: null
+    index: 2
+    upload: true
+    name: WAGO1_IP_PRG1_MUT
+  columns:
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  - '6'
+  - '7'
+  - '8'
+  - '9'
+  - '10'
+  - '11'
+  - '12'
+  - '13'
+  - '14'
+  - '15'
+  - '16'
+  - '17'
+  - '18'
+  - '19'
+  - '20'
+  - '21'
+  - '22'
+  - '23'
+  - '24'
+  - '25'
+  - '26'
+  - '27'
+  - '28'
+  - '29'
+  - '30'
+  - '31'
+  - '32'
+  - '33'
+  - '34'
+  - '35'
+  - '36'
+  - '37'
+  - '38'
+  - '39'
+  - '40'
+  - '41'
+  - '42'
+  - '43'
+  - '44'
+  - '45'
+  - '46'
+  - '47'
+  - '48'
+  - '49'
+  - '50'
+  - '51'
+  - '52'
+  - '53'
+  - '54'
+  - '55'
+  - '56'
+  - '57'
+  - '58'
+  - '59'
+  - '60'
+  - '61'
+  - '62'
+  - '63'
+  - '64'
+  - '65'
+  - '66'
+  - '67'
+  - '68'
+  - '69'
+  - '70'
+  - '71'
+  - '72'
+  - '73'
+  - '74'
+  - '75'
+  - '76'
+  - '77'
+  - '78'
+  - '79'
+  - '80'
+  - '81'
+  - '82'
+  - '83'
+  - '84'
+  - '85'
+  - '86'
+  - '87'
+  - '88'
+  - '89'
+  - '90'
+  - '91'
+  - '92'
+  - '93'
+  - '94'
+  - '95'
+  - '96'
+  - '97'
+  - '98'
+  - '99'
+  - '100'
+  reference:
+    dataframe: null
+    name: mRNA_WS285_length.csv
+  csv_path: media/example/
+Boundary:
+  run: true
+  data:
+  - dataframe: null
+    index: 1
+    upload: true
+    name: WAGO1_IP_WT
+  - dataframe: null
+    index: 2
+    upload: true
+    name: WAGO1_IP_PRG1_MUT
+  columns:
+  - head
+  - tail
+  limit:
+  - - 0
+    - 100
+  - - -100
+    - 0
+  reference:
+    dataframe: null
+    name: mRNA_WS285_boundary.csv
+  csv_path: media/example/
+Codon:
+  run: true
+  data:
+  - dataframe: null
+    index: 1
+    upload: true
+    name: WAGO1_IP_WT
+  - dataframe: null
+    index: 2
+    upload: true
+    name: WAGO1_IP_PRG1_MUT
+  columns:
+  - start codon
+  - stop codon
+  limit:
+  - - -100
+    - 100
+  - - -100
+    - 100
+  reference:
+    dataframe: null
+    name: mRNA_WS285_boundary.csv
+  csv_path: media/example/
+Fold_Change:
+  run: true
+  data:
+  - dataframe: null
+    index: 1
+    upload: true
+    name: WAGO1_IP_WT
+  - dataframe: null
+    index: 2
+    upload: true
+    name: WAGO1_IP_PRG1_MUT
+  columns:
+  - ALL
+  - UTR5
+  - CDS
+  - UTR3
+  reference:
+    dataframe: null
+    name: mRNA_WS285_3region.csv
+  csv_path: media/example/
+Scatter:
+  run: true
+  data:
+  - dataframe: null
+    index: 1
+    upload: true
+    name: WAGO1_IP_WT
+  - dataframe: null
+    index: 2
+    upload: true
+    name: WAGO1_IP_PRG1_MUT
+  columns:
+  - ALL
+  - UTR5
+  - CDS
+  - UTR3
+  reference:
+    dataframe: null
+    name: mRNA_WS285_3region.csv
+  csv_path: media/example/

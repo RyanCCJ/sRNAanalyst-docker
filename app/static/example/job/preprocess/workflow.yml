@@ -1,0 +1,39 @@
+data: WAGO1_IP_WT
+trimming:
+  max_n: '0'
+  score3: '0'
+  score5: '0'
+  tool: cutadapt
+  UMI3: '4'
+  min_length: '17'
+  extra_args: ''
+  adapter3: TGGAATTCTCGGGTGCCAAGG
+  adapter5: ''
+  max_length: '70'
+  active: true
+  UMI5: '4'
+output_dir: ../media/example
+input_file: ../media/example/upload/workflow/WAGO1_IP_WT.fq.gz
+mapping:
+  extra_args: ''
+  active: true
+  boundary: end-to-end
+  filter: 'G:22-23:'
+  efficiency: sensitive
+  search: all
+  reference: ../media/example/upload/workflow/mRNA_WS285.fa
+  tool: bowtie2
+  strand: reverse
+  number: '2'
+normalization:
+  factor: ''
+  extra_args: ''
+  active: true
+  boundary: end-to-end
+  strategy: Abundance
+  efficiency: sensitive
+  search: all
+  reference: ../media/example/upload/workflow/miRNA_WS285.fa
+  tool: perfect
+  strand: forward
+  number: '2'

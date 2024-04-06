@@ -1,0 +1,144 @@
+<!-- database.html -->
+{% load static %}
+
+<div class="row toggle" id="database" style="display:none;">
+
+  <div class="pagetitle mb-4">
+    <h1>Database</h1>
+  </div>
+
+  <!-- Introduction -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Introduction</h5>
+        <p>Below are some commonly used datasets and gene groups for model organisms as a reference, which you can
+          download and use on your own.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Datasets -->
+  <div class="col-md-6" id="dataset-table">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Dataset (C.elegans)</h5>
+        <table class="table datatable table-striped table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Dataset</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in datas.dataset %}
+            <tr>
+              <th scope="row">{{ forloop.counter }}</th>
+              <td class="item">
+                <label class="form-check-label">{{ item.name }}</label>
+              </td>
+            </tr class="mb-3">
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6" id="dataset-detail">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Dataset Detail</h5>
+        <p class="card-text" id="prenote">Please select a data on the left.</p>
+        <div id="detail-block"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- References -->
+  <div class="col-md-6" id="reference-table">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Reference (Model Organism)</h5>
+        <table class="table datatable table-striped table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Reference</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in datas.reference %}
+            <tr>
+              <th scope="row">{{ forloop.counter }}</th>
+              <td class="item">
+                <label class="form-check-label">{{ item.name }}</label>
+              </td>
+            </tr class="mb-3">
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6" id="reference-detail">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Reference Detail</h5>
+        <p class="card-text" id="prenote">Please select a reference on the left.</p>
+        <div id="detail-block"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Groups -->
+  <div class="col-md-6" id="group-table">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Target List (C.elegans WS285)</h5>
+        <table class="table datatable table-striped table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Gene List</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in datas.list %}
+            <tr>
+              <th scope="row">{{ forloop.counter }}</th>
+              <td class="item">
+                <label class="form-check-label">{{ item.name }}</label>
+              </td>
+            </tr class="mb-3">
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6" id="group-detail">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">List Detail</h5>
+        <p class="card-text" id="prenote">Please select a gene list on the left.</p>
+        <div class="row" id="detail-block" style="display:none;">
+          <div class="col-12 position-relative">
+            <b id="detail-name"></b>
+            <a type="button" class="btn btn-sm me-3 position-absolute top-0 end-0 download" id="detail-download">
+              Download Transcripts <i class="bi bi-download"></i>
+            </a>
+          </div>
+          <div class="col-12 mt-3">
+            <table class="table table-striped table-hover" id='detail_table'></table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script> const HCL = "{{ HCL }}"; </script>

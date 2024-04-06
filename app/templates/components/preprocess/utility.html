@@ -1,0 +1,356 @@
+<!-- mapping.html -->
+{% load static %}
+
+<div class="row toggle" id="utility" style="display:none;">
+
+  <div class="pagetitle">
+    <h1>Helper Tool</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">Preprocess</li>
+        <li class="breadcrumb-item active">Helper Tool</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- Instruction -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Instruction</h5>
+        <p>
+          This page provides individual data processing methods, including <b>Field, Nucleotide, Sequence, Strand,
+            Read, Read-count</b> and <b>Format</b>.
+        </p>
+        <a href="#" class="fw-bold text-decoration-underline" id="ex_btn1">Example 1: Converting SAM/BAM to CSV for
+          Analysis</a><br>
+        <p class="text-muted mono hide" id="ex1"><small>
+            Using other preprocessing pipeline to generate an alignment SAM/BAM file, upload this file and generate a 
+            CSV file with read-count. The tool will output a CSV file in a specific format, ready for use with downstream 
+            analysis tools.</small>
+        </p>
+        <div class="py-1"></div>
+        <a href="#" class="fw-bold text-decoration-underline mt-2" id="ex_btn2">Example 2: Finding miRNA from ncRNA
+          reference</a><br>
+        <p class="text-muted mono hide" id="ex2"><small>
+            Verify the annotation information in the fasta file, such as setting Detect Field to "biotype=miRNA". Choose
+            Map Nucleotide to convert U to T for alignment reference. Set Output Format to fasta and uncheck the read
+            count
+            option. This will output a pure miRNA fasta file.</small>
+        </p>
+        <p class="mt-3">
+          If you process all steps at once, the order will be as follows: <br>
+          Input File > Detect Field > Map Nucleotide > Collapse Reads > Filter Sequence > Detect Strand > Merge Field >
+          Distribute Read-count > Normalize Read-count > Output File
+        </p>
+        <p>For more details, please refer to the relevant <a href="https://github.com/RyanCCJ/sRNAnalyzer"
+            target="_blank">GitHub</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings -->
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Settings</h5>
+        <p>Upload the file you want to process, which must be in any of the following formats: <b>fasta (fa), fastq
+            (fq), bam, sam, csv, tsv (bed)</b>. If you are using csv/tsv files, they must contain the required fields to
+          be
+          processed.</p>
+
+        <!-- Input -->
+        <div class="ms-3 mb-2">
+          <label type="button" class="btn btn-sm submit" id="input">
+            <input type="file" class="form-control hide" id="input-upload" required>
+            Upload File <i class="bi bi-plus-circle"></i>
+          </label>
+          <button type="button" class="btn btn-sm submit hide" id="input-current">
+            <div class="d-flex align-items-center">
+              <div id="text"></div>
+              <span class="spinner-border spinner-border-sm ms-1 text-white" role="status"></span>
+              <i class="bi bi-x-circle ms-1"></i>
+            </div>
+          </button>
+          <small class="ps-2 pt-1">
+            Example1:
+            <a href='/sRNAanalyst_static/example/WAGO1_IP_WT_mapped.sam' download>
+              WAGO1_IP_WT_mapped.sam <i class="bi bi-download"></i>
+            </a>
+          </small>
+          <small class="ps-2 pt-1">
+            Example2:
+            <a href='/sRNAanalyst_static/example/ncRNA_WS285.fasta' download>
+              ncRNA_WS285.fasta <i class="bi bi-download"></i>
+            </a>
+          </small>
+        </div>
+        <div class="alert alert-warning hide mt-3" role="alert">
+          Please upload a file before submitting.
+        </div>
+        <hr>
+
+        <!-- Setting -->
+        <b>Required Field</b>
+        <form class="row px-3 mt-1 mb-2">
+          <div class="col-sm-6 mb-2">
+            <label class="form-label fw-bold col-form-label-sm mb-0" data-bs-toggle="tooltip" data-bs-placement="right"
+              data-bs-html="true" title="Choose whether to select the forward or reverse strand, or both.">
+              Detect Strand
+            </label>
+            <select class="form-select" name="strand" id="strand">
+              <option value="forward" selected>Forward Strand</option>
+              <option value="reverse">Reverse-complement Strand</option>
+              <option value="both">Both</option>
+            </select>
+          </div>
+
+          <div class="col-sm-6 mb-2">
+            <label class="form-label fw-bold col-form-label-sm mb-0" data-bs-toggle="tooltip" data-bs-placement="right"
+              data-bs-html="true"
+              title="Choose the final output format <span class='text-warning'>(CSV or Fasta)</span> and whether to retain read count information.">
+              Output Format
+            </label>
+            <div class="input-group">
+              <select class="form-select" name="format" id="format">
+                <option value="csv" selected>CSV</option>
+                <option value="fasta">Fasta</option>
+              </select>
+              <span class="input-group-text">
+                <input class="form-check-input mt-0 me-2" type="checkbox" value="" id="rc" checked>
+                <label class="form-check-label" for="rc">Read Count</label>
+              </span>
+            </div>
+          </div>
+        </form>
+
+        <b>Optional Field</b>
+        <form class="row g-3 px-3 mt-1">
+
+          <div class="col-sm-6 mb-2">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="field_check">
+              <label class="form-label fw-bold" data-bs-toggle="tooltip" data-bs-placement="right" for="field_check"
+                data-bs-html="true"
+                title="Select specific fields from the read ID, typically used for processing specific Fasta Annotations.<br><br>e.g.,  biotype=miRNA">
+                <small>Detect Field</small>
+              </label>
+            </div>
+            <input type="text" class="form-control hide" placeholder="Enter annotation field here..." value=""
+              id="field">
+          </div>
+
+          <div class="col-sm-6 mb-2">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="map_check">
+              <label class="form-label fw-bold" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true"
+                title="Replace specific nucleotides in the sequence. <br><br>e.g., Convert RNA U to T for mapping step.">
+                <small>Map Nucleotide</small>
+              </label>
+            </div>
+            <div class="hide" id="map">
+              <div class="input-group">
+                <span class="input-group-text">From</span>
+                <select class="form-select" name="from" id="from">
+                  <option value="A">A</option>
+                  <option value="T">T</option>
+                  <option value="U" selected>U</option>
+                  <option value="C">C</option>
+                  <option value="G">G</option>
+                  <option value="N">N</option>
+                </select>
+                <span class="input-group-text">To</span>
+                <select class="form-select" name="to" id="to">
+                  <option value="A">A</option>
+                  <option value="T" selected>T</option>
+                  <option value="U">U</option>
+                  <option value="C">C</option>
+                  <option value="G">G</option>
+                  <option value="N">N</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 mb-2">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="filter_check">
+              <label class="form-label fw-bold" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true"
+                title="Filter specific sequences, including header and tail information, as well as length range. <br><br>e.g., head G, length 22-23.">
+                <small>Filter Sequence</small>
+              </label>
+            </div>
+            <div class="hide" id="filter">
+              <div class="input-group">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                  Head
+                </button>
+                <ul class="dropdown-menu py-0 px-1" style="min-width: 3rem;">
+                  <li>
+                    <div class="form-check py-1">
+                      <input class="form-check-input" type="checkbox" value="A" id="head_A" checked>
+                      <label class="form-check-label" for="head_A">A</label>
+                    </div>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li>
+                    <div class="form-check py-1">
+                      <input class="form-check-input" type="checkbox" value="U" id="head_U" checked>
+                      <label class="form-check-label" for="head_U">U</label>
+                    </div>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li>
+                    <div class="form-check py-1">
+                      <input class="form-check-input" type="checkbox" value="C" id="head_C" checked>
+                      <label class="form-check-label" for="head_C">C</label>
+                    </div>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li>
+                    <div class="form-check py-1">
+                      <input class="form-check-input" type="checkbox" value="G" id="head_G" checked>
+                      <label class="form-check-label" for="head_G">G</label>
+                    </div>
+                  </li>
+                </ul>
+                <input type="text" class="form-control" placeholder="Length..." id="length">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                  Tail
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end py-0 px-1" style="min-width: 3rem;">
+                  <li>
+                    <div class="form-check py-1">
+                      <input class="form-check-input" type="checkbox" value="A" id="tail_A" checked>
+                      <label class="form-check-label" for="tail_A">A</label>
+                    </div>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li>
+                    <div class="form-check py-1">
+                      <input class="form-check-input" type="checkbox" value="U" id="tail_U" checked>
+                      <label class="form-check-label" for="tail_U">U</label>
+                    </div>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li>
+                    <div class="form-check py-1">
+                      <input class="form-check-input" type="checkbox" value="C" id="tail_C" checked>
+                      <label class="form-check-label" for="tail_C">C</label>
+                    </div>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider">
+                  </li>
+                  <li>
+                    <div class="form-check py-1">
+                      <input class="form-check-input" type="checkbox" value="G" id="tail_G" checked>
+                      <label class="form-check-label" for="tail_G">G</label>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 mb-2">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="read_check">
+              <label class="form-label fw-bold" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true"
+                title="<span class='text-warning'>Collapse reads:</span> Combines duplicate reads into one and calculates the read count, typically used for organizing Fastq files.<br><br><span class='text-warning'>Distribute read-count:</span> Detects duplicate reads and evenly distributes the read count of the same selected read, typically used for organizing mapping files.">
+                <small>Manipulate Read</small>
+              </label>
+            </div>
+            <div class="hide" id="read">
+              <div class="input-group">
+                <select class="form-select" name="read" id="read">
+                  <option value="collapse" selected>Collapse Duplicate Reads</option>
+                  <option value="distribute">Distribute Read-counts</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 mb-2">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="merge_field_check">
+              <label class="form-label fw-bold" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true"
+                title="Merge specific field from the reference file based on the read or reference ID. <br>Note that only the <span class='text-warning'>intersection</span> of read-data and reference-data will be retained.">
+                <small>Merge Field</small>
+              </label>
+            </div>
+            <div class="hide" id="merge_field">
+              <div class="input-group">
+                <label type="button" class="btn upload-btn" id="upload-btn">
+                  <input type="file" class="hide" id="reference" required>
+                  Choose File
+                </label>
+                <div class="input-group-text" id="reference-text" style="background-color: white; border-right:none;">No file chosen</div>
+                <input type="text" class="form-control" style="background-color: white; border-left:none;" disabled>
+                <span class="input-group-text">Field</span>
+                <input type="text" class="form-control" id="merge" value="" style="max-width: 4rem;">
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 mb-2">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" role="switch" id="normalize_field_check">
+              <label class="form-label fw-bold" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-html="true"
+                title="Normalize read count using RPM or a specific value for normalization. <br>If you want to use sRNA abundance as the normalization basis, please refer to the workflow page.">
+                <small>Normalize Read-count</small>
+              </label>
+            </div>
+            <div class="hide" id="normalize_field">
+              <div class="input-group">
+                <select class="form-select" name="normalize" id="normalize">
+                  <option value="RPM" selected>RPM</option>
+                  <option value="Factor">Factor</option>
+                </select>
+                <span class="input-group-text norm_factor">Factor</span>
+                <input type="text" class="form-control norm_factor" id="factor" value="" style="max-width: 4rem;">
+              </div>
+            </div>
+          </div>
+        </form>
+        <hr>
+
+        <!-- Submit -->
+        <div class="mt-0 pb-5 position-relative">
+          <button type="button" class="btn submit position-absolute top-50 start-50 translate-middle"
+            id="submit_utility">
+            Submit <i class="bi bi-send"></i>
+          </button>
+          <button type="button" class="btn submit_loading position-absolute top-50 start-50 translate-middle hide"
+            id="submit_loading_utility" disabled>
+            <span class="spinner-border spinner-border-sm" role="status"></span>
+            <span id="loading_time"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Result -->
+  <div class="col-12 mt-3 result" id="result_utility" style="display:none;">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Result</h5>
+        <div id="file_block"></div>
+        <div class="mb-2 row" id="img_block"></div>
+      </div>
+    </div>
+  </div>
+
+</div>

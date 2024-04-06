@@ -1,0 +1,67 @@
+<!-- stylesheet-boxplot.html -->
+
+<div class="col-sm-6">
+  <label class="form-label fw-bold col-form-label-sm mb-0">Test</label>
+  <select class="form-select" name="test" id="test">
+    <option value="None">None</option>
+    <option value="U-test" selected>U-test</option>
+    <option value="T-test">T-test</option>
+  </select>
+</div>
+
+<div class="col-sm-6">
+  <label class="form-label fw-bold col-form-label-sm mb-0">
+    Test Format
+  </label>
+  <span class="form-text ms-1">
+    <i class="bi bi-info-circle-fill"></i> Ref:
+    <a href="https://github.com/webermarcolivier/statannot" target="_blank">
+      Github Statannot <i class="bi bi-box-arrow-up-right"></i>
+    </a>
+  </span>
+  <select class="form-select" name="test-format" id="test-format">
+    <option value="simple" selected>simple</option>
+    <option value="full">full</option>
+    <option value="star">star</option>
+  </select>
+</div>
+
+<div class="col-sm-6">
+  <label class="form-label fw-bold col-form-label-sm mb-0">Scale</label>
+  <select class="form-select" name="scale" id="scale">
+    <option value="normal" selected>normal</option>
+    <option value="log2">log2</option>
+    <option value="log10">log10</option>
+  </select>
+</div>
+
+<div class="col-sm-6 condition4">
+  <label class="form-label fw-bold col-form-label-sm mb-0" data-bs-toggle="tooltip" data-bs-placement="right"
+    title="If it's 'multi-data to multi-filter', determine which field should be set as x-axis.">
+    Segmentation
+  </label>
+  <select class="form-select" name="segmentation" id="segmentation">
+    <option value="data" selected>data</option>
+    <option value="filter">list</option>
+  </select>
+</div>
+
+<div class="col-sm-2">
+  <label class="form-label fw-bold col-form-label-sm mb-0" data-bs-toggle="tooltip" data-bs-placement="right"
+    title="Add mean and median to x-ticks">
+    Detail
+  </label>
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" id="detail" checked>
+  </div>
+</div>
+
+<div class="col-sm-2 condition4">
+  <label class="form-label fw-bold col-form-label-sm mb-0" data-bs-toggle="tooltip" data-bs-placement="right"
+    title="Merge all figures if it's 'multi-data to multi-filter'.">
+    Merge
+  </label>
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" id="merge">
+  </div>
+</div>

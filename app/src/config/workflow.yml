@@ -1,0 +1,57 @@
+#============================================
+# Metadata
+data:
+input_file:
+output_dir:
+#============================================
+# Trimming
+Trimming:
+  active: true
+  tool: cutadapt
+  score3: 0
+  score5: 0
+  adapter3:
+  adapter5:
+  UMI3: 0
+  UMI5: 0
+  max_length: 70
+  min_length: 17
+  max_n: 0
+  extra_args:
+#============================================
+# Normalization
+Normalization:
+  active: true
+  strategy: RPM
+  value:
+  reference:
+  tool: perfect
+  strand: forward
+  search: all
+  number: 2
+  efficiency: sensitive
+  boundary: end-to-end
+  extra_args:
+#============================================
+# Mapping
+Mapping:
+  active: true
+  filter: 'no'
+  head_A: true
+  head_U: true
+  head_C: true
+  head_G: true
+  length:
+  tail_A: true
+  tail_U: true
+  tail_C: true
+  tail_G: true
+  reference:
+  tool: bowtie2
+  strand: forward
+  search: best
+  number: 2
+  efficiency: sensitive
+  boundary: end-to-end
+  extra_args:
+#============================================

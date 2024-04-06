@@ -1,0 +1,52 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="800" height="600" version="1.1" xmlns="http://www.w3.org/2000/svg">
+<rect width="800" height="600" x="0" y="0" style="fill:rgb(238,238,238);stroke:none"/>
+<rect width="800" height="600" x="0" y="0" style="fill:rgb(255,255,255);stroke:none"/>
+<text x="2" y="566" fill="rgb(0,0,0)" font-family="Arial" font-size="12">0</text>
+<text x="2" y="502" fill="rgb(0,0,0)" font-family="Arial" font-size="12">250000</text>
+<text x="2" y="438" fill="rgb(0,0,0)" font-family="Arial" font-size="12">500000</text>
+<text x="2" y="374" fill="rgb(0,0,0)" font-family="Arial" font-size="12">750000</text>
+<text x="2" y="309" fill="rgb(0,0,0)" font-family="Arial" font-size="12">1000000</text>
+<text x="2" y="245" fill="rgb(0,0,0)" font-family="Arial" font-size="12">1250000</text>
+<text x="2" y="181" fill="rgb(0,0,0)" font-family="Arial" font-size="12">1500000</text>
+<text x="2" y="117" fill="rgb(0,0,0)" font-family="Arial" font-size="12">1750000</text>
+<text x="2" y="52" fill="rgb(0,0,0)" font-family="Arial" font-size="12">2000000</text>
+<text x="262" y="30" fill="rgb(0,0,0)" font-family="Arial" font-size="12">Distribution of sequence lengths over all sequences</text>
+<line x1="61" y1="560" x2="790" y2="560" stroke="rgb(0,0,0)" stroke-width="1"/>
+<line x1="61" y1="560" x2="61" y2="40" stroke="rgb(0,0,0)" stroke-width="1"/>
+<text x="330" y="595" fill="rgb(0,0,0)" font-family="Arial" font-size="12">Sequence Length (bp)</text>
+<text x="93" y="575" fill="rgb(0,0,0)" font-family="Arial" font-size="12">69</text>
+<rect width="81" height="520" x="142" y="40" style="fill:rgb(230,230,230);stroke:none"/>
+<text x="174" y="575" fill="rgb(0,0,0)" font-family="Arial" font-size="12">70</text>
+<text x="255" y="575" fill="rgb(0,0,0)" font-family="Arial" font-size="12">71</text>
+<rect width="81" height="520" x="304" y="40" style="fill:rgb(230,230,230);stroke:none"/>
+<text x="336" y="575" fill="rgb(0,0,0)" font-family="Arial" font-size="12">72</text>
+<text x="417" y="575" fill="rgb(0,0,0)" font-family="Arial" font-size="12">73</text>
+<rect width="81" height="520" x="466" y="40" style="fill:rgb(230,230,230);stroke:none"/>
+<text x="498" y="575" fill="rgb(0,0,0)" font-family="Arial" font-size="12">74</text>
+<text x="579" y="575" fill="rgb(0,0,0)" font-family="Arial" font-size="12">75</text>
+<rect width="81" height="520" x="628" y="40" style="fill:rgb(230,230,230);stroke:none"/>
+<text x="660" y="575" fill="rgb(0,0,0)" font-family="Arial" font-size="12">76</text>
+<text x="741" y="575" fill="rgb(0,0,0)" font-family="Arial" font-size="12">77</text>
+<line x1="61" y1="560" x2="790" y2="560" stroke="rgb(180,180,180)" stroke-width="1"/>
+<line x1="61" y1="496" x2="790" y2="496" stroke="rgb(180,180,180)" stroke-width="1"/>
+<line x1="61" y1="432" x2="790" y2="432" stroke="rgb(180,180,180)" stroke-width="1"/>
+<line x1="61" y1="368" x2="790" y2="368" stroke="rgb(180,180,180)" stroke-width="1"/>
+<line x1="61" y1="303" x2="790" y2="303" stroke="rgb(180,180,180)" stroke-width="1"/>
+<line x1="61" y1="239" x2="790" y2="239" stroke="rgb(180,180,180)" stroke-width="1"/>
+<line x1="61" y1="175" x2="790" y2="175" stroke="rgb(180,180,180)" stroke-width="1"/>
+<line x1="61" y1="111" x2="790" y2="111" stroke="rgb(180,180,180)" stroke-width="1"/>
+<line x1="61" y1="46" x2="790" y2="46" stroke="rgb(180,180,180)" stroke-width="1"/>
+<line x1="101" y1="560" x2="182" y2="560" stroke="rgb(136,34,85)" stroke-width="1"/>
+<line x1="182" y1="560" x2="263" y2="560" stroke="rgb(136,34,85)" stroke-width="1"/>
+<line x1="263" y1="560" x2="344" y2="560" stroke="rgb(136,34,85)" stroke-width="1"/>
+<line x1="344" y1="560" x2="425" y2="560" stroke="rgb(136,34,85)" stroke-width="1"/>
+<line x1="425" y1="560" x2="506" y2="560" stroke="rgb(136,34,85)" stroke-width="1"/>
+<line x1="506" y1="560" x2="587" y2="311" stroke="rgb(136,34,85)" stroke-width="1"/>
+<line x1="587" y1="311" x2="668" y2="40" stroke="rgb(136,34,85)" stroke-width="1"/>
+<line x1="668" y1="40" x2="749" y2="560" stroke="rgb(136,34,85)" stroke-width="1"/>
+<rect width="130" height="23" x="660" y="40" style="fill:rgb(255,255,255);stroke:none"/>
+<rect width="130" height="23" x="660" y="40" rx="0" ry="0" style="fill:none;stroke-width:1;stroke:rgb(192,192,192)"/>
+<text x="663" y="55" fill="rgb(136,34,85)" font-family="Arial" font-size="12" font-weight="bold">Sequence Length</text>
+</svg>

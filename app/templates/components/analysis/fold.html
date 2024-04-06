@@ -1,0 +1,244 @@
+<!-- fold.html -->
+{% load static %}
+
+<div class="row toggle" id="fold" style="display:none;">
+
+  <div class="pagetitle">
+    <h1>Fold Change</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">Analysis</li>
+        <li class="breadcrumb-item active">Fold Change</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- instruction -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Fold Change</h5>
+        <div class="row">
+          <div class="col-md-5">
+            <img src="/sRNAanalyst_static/img/Fold_Change.png" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-7">
+            <p>The fold change analysis focuses on observing data from one or multiple pairs of wild-type and mutant
+              samples. It allows further comparison of the changes in specific gene lists under different experimental
+              conditions based on the selected observation set. To use this feature, please select <b>Paired Data</b> on
+              the input Dataset page and upload the wild-type and mutant data for comparison.</p>
+            <p>The reference CSV file needs to include the coordinates of the regions to be observed for each target
+              RNA; refer to the Density page for further instructions.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Warning -->
+  <div class="col-12 paired-data-warning">
+    <div class="alert alert-warning alert-dismissible fade show mt-3 no-data-alert" role="alert">
+      <i class="bi bi-exclamation-triangle me-1"></i>
+      Please input a valid pair of data (control and mutant) for fold-change analysis.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+
+  <!-- Run Config -->
+  <!--div class="col-md-6 run_config" id="run_config">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Running</h5>
+
+        <div class="alert alert-primary alert-dismissible fade show default-data-alert" role="alert" id=""
+          style="display:none;">
+          <i class="bi bi-info-circle me-1"></i>
+          You have selected the default dataset, no need for reanalysis.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div class="alert alert-warning alert-dismissible fade show custom-data-alert" role="alert" id=""
+          style="display:none;">
+          <i class="bi bi-exclamation-triangle me-1"></i>
+          You are using a custom dataset, which requires pre-analysis. If it has already been analyzed, there
+          is no need
+          to re-run the analysis.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <form>
+          <div class="row mb-3">
+            <label class="col-form-label col-sm-3">Active</label>
+            <div class="col-sm-9 pt-2">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="active">
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label class="col-form-label col-sm-3 mt-3">Regions</label>
+            <div class="col-sm-9">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="ALL" name="region" value="ALL" checked>
+                <label class="form-check-label" for="ALL">
+                  ALL
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="UTR5" name="region" value="UTR5" checked>
+                <label class="form-check-label" for="UTR5">
+                  5'UTR
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="CDS" name="region" value="CDS" checked>
+                <label class="form-check-label" for="CDS">
+                  CDS
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="UTR3" name="region" value="UTR3" checked>
+                <label class="form-check-label" for="UTR3">
+                  3'UTR
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label for="reference" class="col-sm-3 col-form-label">Reference</label>
+            <div class="col-sm-9">
+              <small class="ps-1">
+                Default:
+                <a href='/sRNAanalyst_static/example/mRNA_WS275_3region.csv' download>
+                  mRNA_WS275_3region.csv <i class="bi bi-download"></i>
+                </a>
+              </small>
+              <input class="form-control" type="file" id="reference">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div-->
+
+  <!-- Settings -->
+  <div class="col-md-12 paired-data" id="config">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Settings</h5>
+
+        <!--div class="alert alert-warning alert-dismissible fade show mt-3 no-data-alert" role="alert" id="">
+          <i class="bi bi-exclamation-triangle me-1"></i>
+          You haven't selected any data. Please make a selection before proceeding with the analysis.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div-->
+
+        <form class="row g-3 px-3">
+          <!--div class="col-sm-6" style="display:none;">
+            <label class="form-label fw-bold col-form-label-sm mb-0">Active</label>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="active" checked>
+            </div>
+          </div-->
+
+          <!--div class="col-sm-6" style="display:none;">
+            <label class="form-label fw-bold col-form-label-sm mb-0">Regions</label>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="ALL" name="region" value="ALL"  checked>
+                <label class="form-check-label" for="ALL">
+                  ALL
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="UTR5" name="region" value="UTR5">
+                <label class="form-check-label" for="UTR5">
+                  5'UTR
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="CDS" name="region" value="CDS">
+                <label class="form-check-label" for="CDS">
+                  CDS
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="UTR3" name="region" value="UTR3">
+                <label class="form-check-label" for="UTR3">
+                  3'UTR
+                </label>
+              </div>
+          </div-->
+
+          <div class="col-sm-6">
+            <label class="form-label fw-bold col-form-label-sm mb-0">Title (Optional)</label>
+            <input type="text" class="form-control" placeholder="Enter plot title here..." value="" id="title">
+          </div>
+
+          <div class="col-sm-6">
+            <label class="form-label fw-bold col-form-label-sm mb-0">Reference</label>
+            <span class="form-text ms-1">
+              <i class="bi bi-info-circle-fill"></i> Example:
+              <a href="/sRNAanalyst_static/example/mRNA_WS285_3region.csv" download>
+                mRNA_WS285_3region.csv <i class="bi bi-download"></i>
+              </a>
+            </span>
+            <div class="input-group">
+              <label type="button" class="btn upload-btn" id="upload-btn">
+                <input type="file" class="hide" id="reference" required>
+                Choose File
+              </label>
+              <div class="input-group-text" id="reference-text" style="background-color: white; border-right:none;">No file chosen</div>
+              <input type="text" class="form-control" style="background-color: white; border-left:none;" disabled>
+            </div>
+          </div>
+
+          {% include 'components/analysis/config/stylesheet-boxplot.html' %}
+
+          <div class="col-sm-2">
+            <label class="form-label fw-bold col-form-label-sm mb-0">Delete Zero</label>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="delete-zero" checked>
+            </div>
+          </div>
+        </form>
+
+        <h5 class="card-title">Style</h5>
+        {% include 'components/analysis/config/stylesheet.html' %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Submit -->
+  <div class="col-12 mb-3 position-relative paired-data">
+    <button type="button" class="btn submit position-absolute top-50 start-50 translate-middle" id="submit_fold">
+      Submit <i class="bi bi-send"></i>
+    </button>
+    <button type="button" class="btn submit_loading position-absolute top-50 start-50 translate-middle hide"
+      id="submit_loading_fold" disabled>
+      <span class="spinner-border spinner-border-sm" role="status"></span>
+      <span id="loading_time"></span>
+    </button>
+  </div>
+
+  <!-- Result -->
+  <div class="col-12 mt-3 result" id="result_fold">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Result</h5>
+        <small>
+          <span class="d-flex"><b>Dataset:</b><div class="ms-2" id="target_data"></div></span>
+          <div id="target_list_div">
+            <span class="d-flex">
+              <b>Target List:</b><div class="ms-2" id="target_list"></div>
+            </span>
+          </div>
+        </small>
+        <div class="my-2" id="file_block"></div>
+        <div class="row" id="img_block"></div>
+      </div>
+    </div>
+  </div>
+
+</div>

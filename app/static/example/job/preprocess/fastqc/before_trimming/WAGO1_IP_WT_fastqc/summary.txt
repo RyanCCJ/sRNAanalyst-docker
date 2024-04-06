@@ -1,0 +1,10 @@
+PASS	Basic Statistics	WAGO1_IP_WT.fq.gz
+PASS	Per base sequence quality	WAGO1_IP_WT.fq.gz
+PASS	Per sequence quality scores	WAGO1_IP_WT.fq.gz
+FAIL	Per base sequence content	WAGO1_IP_WT.fq.gz
+PASS	Per sequence GC content	WAGO1_IP_WT.fq.gz
+PASS	Per base N content	WAGO1_IP_WT.fq.gz
+WARN	Sequence Length Distribution	WAGO1_IP_WT.fq.gz
+PASS	Sequence Duplication Levels	WAGO1_IP_WT.fq.gz
+WARN	Overrepresented sequences	WAGO1_IP_WT.fq.gz
+FAIL	Adapter Content	WAGO1_IP_WT.fq.gz

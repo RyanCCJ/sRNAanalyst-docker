@@ -1,0 +1,19 @@
+data:
+  single:
+  - index: 1
+    upload: true
+    name: WAGO1_IP_WT
+  paired:
+  - index: 1
+    upload: true
+    name: WAGO1_IP_WT
+  - index: 2
+    upload: true
+    name: WAGO1_IP_PRG1_MUT
+group:
+- index: '2'
+  upload: true
+  name: WAGO-1_target
+- index: '3'
+  upload: true
+  name: CSR-1_target

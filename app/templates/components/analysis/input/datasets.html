@@ -1,0 +1,179 @@
+<!-- datasets.html -->
+{% load static %}
+
+<div class="row toggle" id="dataset" style="display:none;">
+
+  <div class="pagetitle">
+    <h1>Dataset</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">Analysis</li>
+        <li class="breadcrumb-item active">Dataset</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- Instruction -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Instruction</h5>
+        <p>Upload the data table of the experiment for downstream analysis. The data table must be the following format:
+        </p>
+        <div class="row">
+          <div class="col-md-5">
+            <img src="/sRNAanalyst_static/img/Dataset.png" class="img-fluid img-thumbnail mt-2">
+          </div>
+          <ul class="col-md-7">
+            <li>Organized in <b>read-reference format</b> using alignment software, including fields such as
+              read_id, ref_id, read_count, init_pos, end_pos, etc. Not necessarily in order.</li>
+            <li>The file should be in <b>CSV format</b> (Comma-Separated Values), with comments indicated by the "#"
+              symbol at the beginning and including <b>headers</b> for each field.</li>
+          </ul>
+        </div>
+        <p>
+          You can use the <a href="#" class="fw-bold to_workflow">Preprocessing Workflow 
+          <i class="bi bi-box-arrow-up-right"></i></a> or <a href="#" class="fw-bold to_utility">Helper Tool 
+          <i class="bi bi-box-arrow-up-right"></i></a> on this website to generate data tables. The Workflow accepts a 
+          FASTQ file or its compressed version, while the Helper Tool accepts a SAM/BAM file.
+        </p>
+        <img src="/sRNAanalyst_static/img/dataset_flow.png" class="d-block mx-auto w-75">
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Settings</h5>
+        <p>Select and upload either <b>single data</b> or <b>paired data</b> (control and mutant) for further analysis.
+          Please note that
+          fold-change and scatter plot analyses can only be performed using paired data.</p>
+
+        <!-- Switch -->
+        <div class="form-check form-switch mt-1 mb-4">
+          <input class="form-check-input" type="checkbox" role="switch" id="switch-data">
+          <small class="form-check-label">
+            <span class="fw-bold">Paired Data</span>
+            <span class="ms-3">Example:</span>
+            (Control)
+            <a href='/sRNAanalyst_static/example/WAGO1_IP_WT.csv' download>
+              WAGO1_IP_WT.csv <i class="bi bi-download"></i>
+            </a>
+            , (Mutant)
+            <a href='/sRNAanalyst_static/example/WAGO1_IP_PRG1_MUT.csv' download>
+              WAGO1_IP_PRG1_MUT.csv <i class="bi bi-download"></i>
+            </a>
+          </small>
+        </div>
+
+        <!-- Single Data -->
+        <div class="row" id="single">
+          <div class="col-sm-6">
+            <div class="input-group input-group-sm mb-3 d-flex flex-nowrap">
+              <button type="button" class="btn upload-btn fw-bold d-flex align-items-center" id="active-btn">
+                Upload
+                <i class="bi bi-upload ms-1"></i>
+                <i class="bi bi-check-circle ms-1 hide"></i>
+                <span class="spinner-border spinner-border-sm ms-1 hide" role="status"></span>
+              </button>
+              <label type="button" class="btn btn-sm upload-btn text-nowrap" id="upload-btn">
+                <input type="file" class="hide" id="upload">
+                Choose File
+              </label>
+              <div class="input-group-text overflow-scroll" id="upload-text"
+                style="background-color: white; border-right:none;">No file chosen</div>
+              <input type="text" class="form-control p-0" style="background-color: white; border-left:none;" disabled>
+            </div>
+          </div>
+        </div>
+
+        <!-- Paired Data -->
+        <div class="card mb-3 p-3 hide" style="border:1px Silver solid;" id="paired">
+          <div class="row">
+            <div class="col-md-12 my-1">
+              <button type="button" class="btn btn-sm upload-btn fw-bold d-flex align-items-center" id="active-btn">
+                Upload
+                <i class="bi bi-upload ms-1"></i>
+                <i class="bi bi-check-circle ms-1 hide"></i>
+                <span class="spinner-border spinner-border-sm ms-1 hide" role="status"></span>
+              </button>
+            </div>
+            <div class="col-md-6" id="control">
+              <label class="form-label fw-bold col-form-label-sm mb-0">
+                Control
+              </label>
+              <div class="input-group input-group-sm mb-2">
+                <label type="button" class="btn btn-sm upload-btn" id="upload-btn">
+                  <input type="file" class="hide" id="upload">
+                  Choose File
+                </label>
+                <div class="input-group-text" id="upload-text" style="background-color: white; border-right:none;">No file chosen</div>
+                <input type="text" class="form-control" style="background-color: white; border-left:none;" disabled>
+              </div>
+            </div>
+            <div class="col-md-6" id="mutant">
+              <label class="form-label fw-bold col-form-label-sm mb-0">
+                Mutant
+              </label>
+              <div class="input-group input-group-sm mb-2">
+                <label type="button" class="btn btn-sm upload-btn" id="upload-btn">
+                  <input type="file" class="hide" id="upload2">
+                  Choose File
+                </label>
+                <div class="input-group-text" id="upload2-text" style="background-color: white; border-right:none;">No file chosen</div>
+                <input type="text" class="form-control" style="background-color: white; border-left:none;" disabled>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!--div class="col-12 hide" id="single">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Single Data</h5>
+        <p>Uploading and enabling a single experiment data allows you to perform the following analyses: read-count
+          distribution of
+          <b>Density</b>, <b>Metagene</b>, <b>Head & Tail</b>, <b>Start & Stop Codon</b>.
+        </p>
+        <div class="row">
+          <div class="col-12 mt-1 mb-4">
+            <button type="button" class="btn btn-sm submit ms-1" id="add">
+              Add Data <i class="bi bi-plus-circle"></i>
+            </button>
+            <small type="button" class="ps-2 text-decoration-underline" id="example" style="color:#4154f1;" download>Load
+              Examples</small>
+          </div>
+          <div class="col-12" id="new-data-block"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 hide" id="paired">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Paired Data</h5>
+        <p>Uploading and enabling paired experiment data (control & mutant) allows you to perform the following
+          analyses: <b>Fold Change</b>,
+          <b>Scatter Plot</b>.
+        </p>
+        <div class="row ">
+          <div class="col-12 mt-1 mb-4">
+            <button type="button" class="btn btn-sm submit ms-1" id="add">
+              Add Data <i class="bi bi-plus-circle"></i>
+            </button>
+            <small type="button" class="ps-2 text-decoration-underline" id="example" style="color:#4154f1;" download>Load
+              Examples</small>
+          </div>
+          <div class="col-12" id="new-data-block"></div>
+        </div>
+      </div>
+    </div>
+  </div-->
+</div>

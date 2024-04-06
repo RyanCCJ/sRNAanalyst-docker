@@ -1,0 +1,70 @@
+<!-- cutadapt.html -->
+
+<hr><b>Head & Tail</b>
+
+<div class="col-sm-6">
+  <label for="adapter3" class="form-label fw-bold col-form-label-sm mb-0">3' Phred score (Q score)
+    ≥</label>
+  <input type="text" class="form-control" placeholder="default: 0" value="0" id="score3">
+</div>
+<div class="col-sm-6">
+  <label for="adapter5" class="form-label fw-bold col-form-label-sm mb-0">5' Phred score (Q score)
+    ≥</label>
+  <input type="text" class="form-control" placeholder="default: 0" value="0" id="score5">
+</div>
+<div class="col-sm-6">
+  <label for="adapter3" class="form-label fw-bold col-form-label-sm mb-0">3' Adapter (Optional)</label>
+  <input type="text" class="form-control" placeholder="enter sequence here..." id="adapter3">
+</div>
+<div class="col-sm-6">
+  <label for="adapter5" class="form-label fw-bold col-form-label-sm mb-0">5' Adapter (Optional)</label>
+  <input type="text" class="form-control" placeholder="enter sequence here..." id="adapter5">
+</div>
+<div class="col-sm-6">
+  <label for="UMI3" class="form-label fw-bold col-form-label-sm mb-0">3' UMI</label>
+  <input type="text" class="form-control" placeholder="default: 0" value="0" id="UMI3">
+</div>
+<div class="col-sm-6">
+  <label for="UMI5" class="form-label fw-bold col-form-label-sm mb-0">5' UMI</label>
+  <input type="text" class="form-control" placeholder="default: 0" value="0" id="UMI5">
+</div>
+
+<hr><b>Total</b>
+
+<div class="col-6">
+  <label class="form-label fw-bold col-form-label-sm mb-0" data-bs-toggle="tooltip" data-bs-placement="right"
+    data-bs-html="true"
+    title="After trimming the adapters, select the read length <span class='text-warning'>(less than)</span><br>You can't use 0 !!!">Max
+    Length ≤</label>
+  <input type="text" class="form-control" placeholder="default: 70" value="70" id="max_length">
+</div>
+<div class="col-6">
+  <label class="form-label fw-bold col-form-label-sm mb-0" data-bs-toggle="tooltip" data-bs-placement="right"
+    data-bs-html="true"
+    title="After trimming the adapters, select the read length <span class='text-warning'>(greater than)</span><br>You can't use 0 !!!">Min
+    Length ≥</label>
+  <input type="text" class="form-control" placeholder="default: 17" value="17" id="min_length">
+</div>
+<div class="col-6">
+  <label class="form-label fw-bold col-form-label-sm mb-0" data-bs-toggle="tooltip" data-bs-placement="right"
+    data-bs-html="true"
+    title="Discard reads with more than a specific number of <span class='text-warning'>wildcard characters 'N'</span>.<br>It can be between 0 and 1, representing the proportion of maximally allowed 'N' bases in the read.">Max
+    N ≤</label>
+  <input type="text" class="form-control" placeholder="default: 0" value="0" id="max_n">
+</div>
+
+<hr><b>Others</b>
+
+<div class="col-12 mb-3">
+  <label class="form-label fw-bold col-form-label-sm mb-0" data-bs-toggle="tooltip" data-bs-placement="right"
+    data-bs-html="true"
+    title="Enter arguments that are not provided in the fields, and must follow the original tool's format.<br>Please refer to the link on the right for more information. <br><br>e.g.,  -a AACCGGTT -m 17 --trim-n">Extra
+    Arguments (Optional)</label>
+  <span class="form-text ms-1">
+    <i class="bi bi-info-circle-fill"></i> Ref:
+    <a href="https://cutadapt.readthedocs.io/en/stable/guide.html" target="_blank">
+      Cutadapt User Guide <i class="bi bi-box-arrow-up-right"></i>
+    </a>
+  </span>
+  <input type="text" class="form-control" placeholder="enter arguments here..." id="extra_args">
+</div>

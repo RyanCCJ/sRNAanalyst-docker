@@ -1,0 +1,10 @@
+PASS	Basic Statistics	WAGO1_IP_WT_trimmed.fq
+FAIL	Per base sequence quality	WAGO1_IP_WT_trimmed.fq
+PASS	Per sequence quality scores	WAGO1_IP_WT_trimmed.fq
+FAIL	Per base sequence content	WAGO1_IP_WT_trimmed.fq
+PASS	Per sequence GC content	WAGO1_IP_WT_trimmed.fq
+PASS	Per base N content	WAGO1_IP_WT_trimmed.fq
+WARN	Sequence Length Distribution	WAGO1_IP_WT_trimmed.fq
+FAIL	Sequence Duplication Levels	WAGO1_IP_WT_trimmed.fq
+WARN	Overrepresented sequences	WAGO1_IP_WT_trimmed.fq
+PASS	Adapter Content	WAGO1_IP_WT_trimmed.fq

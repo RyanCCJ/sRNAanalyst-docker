@@ -1,0 +1,212 @@
+data:
+  - name: PRG1_IP_WT1.fq.gz
+    path: data/dataset/PRG1_IP_WT1.fq.gz
+    replicate: 1
+    species: C.elegans
+    type: wild-type
+    discription: CLASH data of C. elegans; young adult hermaphrodite; N2 background (SRR6512652)
+    url: https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR6512652
+  
+  - name: PRG1_IP_WT2.fq.gz
+    path: data/dataset/PRG1_IP_WT2.fq.gz
+    replicate: 2
+    species: C.elegans
+    type: wild-type
+    discription: CLASH data of C. elegans; young adult hermaphrodite; N2 background (SRR6512653)
+    url: https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR6512653
+  
+  - name: PRG1_IP_CSR1_KO1.fq.gz
+    path: data/dataset/PRG1_IP_CSR1_KO1.fq.gz
+    replicate: 1
+    species: C.elegans
+    type: mutant
+    discription: CLASH data of C. elegans; young adult hermaphrodite; csr-1 degron background (SRR6512654)
+    url: https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR6512654
+  
+  - name: PRG1_IP_CSR1_KO2.fq.gz
+    path: data/dataset/PRG1_IP_CSR1_KO2.fq.gz
+    replicate: 2
+    species: C.elegans
+    type: mutant
+    discription: CLASH data of C. elegans; young adult hermaphrodite; csr-1 degron background (SRR6512655)
+    url: https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR6512655
+  
+  - name: ALG1_IP_WT1.fq.gz
+    path: data/dataset/ALG1_IP_WT1.fq.gz
+    replicate: 1
+    species: C.elegans
+    type: wild-type
+    discription: ALG-1 iCLIP in wild-type (N2) C. elegans at L4; 29hrs, 25C (SRR3882724)
+    url: https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR3882724
+  
+  - name: ALG1_IP_WT2.fq.gz
+    path: data/dataset/ALG1_IP_WT2.fq.gz
+    replicate: 2
+    species: C.elegans
+    type: wild-type
+    discription: ALG-1 iCLIP in wild-type (N2) C. elegans at L4; 29hrs, 25C (SRR3882728)
+    url: https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR3882728
+  
+  - name: ALG1_IP_WT3.fq.gz
+    path: data/dataset/ALG1_IP_WT3.fq.gz
+    replicate: 3
+    species: C.elegans
+    type: wild-type
+    discription: ALG-1 iCLIP in wild-type (N2) C. elegans at L4; 29hrs, 25C (SRR3882949)
+    url: https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR3882949
+
+  - name: WAGO1_IP_WT.fq.gz
+    path: data/dataset/WAGO1_IP_WT.fq.gz
+    replicate: 1
+    species: C.elegans
+    type: wild-type
+    discription: GSM3578001; WT_CRISPR_WAGO-1-FLAG_IP_sRNA-seq; Caenorhabditis elegans; OTHER (SRR8482951)
+    url: https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR8482951
+  
+  - name: WAGO1_IP_PRG1_MUT.fq.gz
+    path: data/dataset/WAGO1_IP_PRG1_MUT.fq.gz
+    replicate: 1
+    species: C.elegans
+    type: mutant
+    discription: GSM3577999; piwi_CRISPR_WAGO-1-FLAG_IP_sRNA-seq; Caenorhabditis elegans; OTHER (SRR8482949)
+    url: https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR8482949
+
+  - name: HRDE1_IP_WT1.fq.gz
+    path: data/dataset/HRDE1_IP_WT1.fq.gz
+    replicate: 1
+    species: C.elegans
+    type: wild-type
+    discription: GSM4694798; GFP_HRDE-1_WT_lateL4_IP_rep1_sRNA-seq; Caenorhabditis elegans; RIP-Seq (SRR12318140)
+    url: https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR12318140
+
+  - name: HRDE1_IP_WT2.fq.gz
+    path: data/dataset/HRDE1_IP_WT2.fq.gz
+    replicate: 2
+    species: C.elegans
+    type: wild-type
+    discription: GSM4694799; GFP_HRDE-1_WT_lateL4_IP_rep2_sRNA-seq; Caenorhabditis elegans; RIP-Seq (SRR12318141)
+    url: https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR12318141
+
+  - name: HRDE1_IP_CSR1_KO1.fq.gz
+    path: data/dataset/HRDE1_IP_CSR1_KO1.fq.gz
+    replicate: 1
+    species: C.elegans
+    type: mutant
+    discription: GSM4694802; GFP_HRDE-1_csr-1_KO_lateL4_IP_rep1_sRNA-seq; Caenorhabditis elegans; RIP-Seq (SRR12318144)
+    url: https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR12318144
+
+  - name: HRDE1_IP_CSR1_KO2.fq.gz
+    path: data/dataset/HRDE1_IP_CSR1_KO2.fq.gz
+    replicate: 2
+    species: C.elegans
+    type: mutant
+    discription: GSM4694803; GFP_HRDE-1_csr-1_KO_lateL4_IP_rep2_sRNA-seq; Caenorhabditis elegans; RIP-Seq (SRR12318145)
+    url: https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR12318145
+
+  - name: CSR1_IP_WT1.fq.gz
+    path: data/dataset/CSR1_IP_WT1.fq.gz
+    replicate: 1
+    species: C.elegans
+    type: wild-type
+    discription: GSM4694790; FLAG_CSR-1_WT_lateL4_IP_rep1_sRNA-seq; Caenorhabditis elegans; RIP-Seq (SRR12318132)
+    url: https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR12318132
+  
+  - name: CSR1_IP_WT2.fq.gz
+    path: data/dataset/CSR1_IP_WT2.fq.gz
+    replicate: 2
+    species: C.elegans
+    type: wild-type
+    discription: GSM4694791; FLAG_CSR-1_WT_lateL4_IP_rep2_sRNA-seq; Caenorhabditis elegans; RIP-Seq (SRR12318133)
+    url: https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR12318133
+
+  - name: CSR1_IP_Slicer_KO1.fq.gz
+    path: data/dataset/CSR1_IP_Slicer_KO1.fq.gz
+    replicate: 1
+    species: C.elegans
+    type: mutant
+    discription: GSM4694792; FLAG_CSR-1_ADH_lateL4_IP_rep1_sRNA-seq; Caenorhabditis elegans; RIP-Seq (SRR12318134)
+    url: https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR12318134
+  
+  - name: CSR1_IP_Slicer_KO2.fq.gz
+    path: data/dataset/CSR1_IP_Slicer_KO2.fq.gz
+    replicate: 2
+    species: C.elegans
+    type: mutant
+    discription: GSM4694793; FLAG_CSR-1_ADH_lateL4_IP_rep2_sRNA-seq; Caenorhabditis elegans; RIP-Seq (SRR12318135)
+    url: https://trace.ncbi.nlm.nih.gov/Traces/sra/?run=SRR12318135
+
+
+reference:
+  - name: Worm_mRNA.fa
+    path: data/reference/mRNA_WS285.fa
+    species: C.elegans
+    discription: WormBase PRJNA13758 WS285 mRNA
+    url: https://downloads.wormbase.org/species/c_elegans/PRJNA13758/sequence/transcripts/
+
+  - name: Worm_ncRNA.fa
+    path: data/reference/ncRNA_WS285.fa
+    species: C.elegans
+    discription: WormBase PRJNA13758 WS285 ncRNA
+    url: https://downloads.wormbase.org/species/c_elegans/PRJNA13758/sequence/transcripts/
+
+  - name: Worm_pseudogenic.fa
+    path: data/reference/pseudogenic_WS285.fa
+    species: C.elegans
+    discription: WormBase PRJNA13758 WS285 pseudogenic
+    url: https://downloads.wormbase.org/species/c_elegans/PRJNA13758/sequence/transcripts/
+
+  - name: Worm_transposon.fa
+    path: data/reference/transposon_WS285.fa
+    species: C.elegans
+    discription: WormBase PRJNA13758 WS285 transposon
+    url: https://downloads.wormbase.org/species/c_elegans/PRJNA13758/sequence/transcripts/
+
+  - name: Worm_miRNA.fa
+    path: data/reference/Worm_miRNA.fa
+    species: Caenorhabditis elegans
+    discription: mirBase v22.1
+    url: https://mirbase.org/browse/results/?organism=cel
+
+  - name: Homo_mRNA.fa
+    path: data/reference/Homo_mRNA.fa
+    species: Homo sapiens
+    discription: GENCODE Release 44 (GRCh38.p14)
+    url: https://www.gencodegenes.org/human/
+  
+  - name: Homo_miRNA.fa
+    path: data/reference/Homo_miRNA.fa
+    species: Homo sapiens
+    discription: mirBase v22.1
+    url: https://mirbase.org/browse/results/?organism=hsa
+
+  - name: Mus_mRNA.fa
+    path: data/reference/Mus_mRNA.fa
+    species: Mus musculus
+    discription: GENCODE Release M33 (GRCm39)
+    url: https://www.gencodegenes.org/mouse/
+
+  - name: Mus_miRNA.fa
+    path: data/reference/Mus_miRNA.fa
+    species: Mus musculus
+    discription: mirBase v22.1
+    url: https://mirbase.org/browse/results/?organism=mmu
+
+  - name: Fly_miRNA.fa
+    path: data/reference/Fly_miRNA.fa
+    species: Drosophila melanogaster
+    discription: mirBase v22.1
+    url: https://mirbase.org/browse/results/?organism=dme
+
+list:
+  - name: ALL_mRNA
+    path: data/list/ALL_mRNA
+  - name: WAGO-1_target
+    path: data/list/WAGO-1_target
+  - name: CSR-1_target
+    path: data/list/CSR-1_target
+  - name: Germline_target
+    path: data/list/Germline_target
+  - name: Germline_enriched_target
+    path: data/list/Germline_enriched_target
+  - name: Soma_target
+    path: data/list/Soma_target

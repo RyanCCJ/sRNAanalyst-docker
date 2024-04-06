@@ -1,0 +1,30 @@
+<!-- header.html -->
+{% load static %}
+
+<header id="header" class="header fixed-top d-flex align-items-center">
+  <div class="d-flex align-items-center">
+    <i class="bi bi-list toggle-sidebar-btn me-1"></i>
+    <a href="/sRNAanalyst/" class="logo d-flex align-items-center">
+      <img src="{% static 'img/logo.png' %}">
+      <span class="d-none d-sm-block">sRNA Analyst</span>
+    </a>
+  </div>
+  <nav class="header-nav ms-auto me-3">
+    <ul class="nav nav-tabs nav-tabs-bordered">
+      <li class="nav-item">
+        <a href="#" class="nav-link toggle_control active" id="header_tutorial">Tutorial</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link toggle_control" id="header_preprocess">Preprocess</a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link toggle_control" id="header_analysis">Analysis</a>
+      </li>
+      <!--li class="nav-item">
+        <a href="#" class="nav-link toggle_control" id="header_database">Database</a>
+      </li-->
+      <li class="nav-item">
+        <a href="#" class="nav-link toggle_control" id="header_contact">Contact</a>
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,213 @@
+<!-- codon.html -->
+{% load static %}
+
+<div class="row toggle" id="codon" style="display:none;">
+
+  <div class="pagetitle">
+    <h1>Start & Stop Codon</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">Analysis</li>
+        <li class="breadcrumb-item active">Start & Stop Codon</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- instruction -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Start & Stop Codon Distribution</h5>
+        <div class="row">
+          <div class="col-md-4">
+            <img src="/sRNAanalyst_static/img/Start_Codon.png" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-4">
+            <img src="/sRNAanalyst_static/img/Stop_Codon.png" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-4">
+            <p>The Start and Stop Codon analysis focuses on the read count analysis around the CDS region. In addition
+              to the default 100 nt length, users can also set the desired length or specific positions for observation.
+              It mainly includes three types of analysis: binding ratio, read counts, and read counts distribution.</p>
+            <p>The reference CSV file needs to include the start and stop codon coordinates for each target RNA,
+              with the column names 'start codon' and 'stop codon'.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Warning -->
+  <div class="col-12 single-data-warning">
+    <div class="alert alert-warning alert-dismissible fade show mt-3 no-data-alert" role="alert">
+      <i class="bi bi-exclamation-triangle me-1"></i>
+      Please input a valid data for start/stop codon analysis.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+
+  <!-- Run Config -->
+  <!--div class="col-md-6 run_config" id="run_config">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Running</h5>
+
+        <div class="alert alert-primary alert-dismissible fade show default-data-alert" role="alert" id=""
+          style="display:none;">
+          <i class="bi bi-info-circle me-1"></i>
+          You have selected the default dataset, no need for reanalysis.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div class="alert alert-warning alert-dismissible fade show custom-data-alert" role="alert" id=""
+          style="display:none;">
+          <i class="bi bi-exclamation-triangle me-1"></i>
+          You are using a custom dataset, which requires pre-analysis. If it has already been analyzed, there is no need
+          to re-run the analysis.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <form>
+          <div class="row mb-3">
+            <label class="col-form-label col-sm-3">Active</label>
+            <div class="col-sm-9 pt-2">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="active">
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label class="col-form-label col-sm-3 mt-3">Position</label>
+            <div class="col-sm-9">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="start codon" name="position" value="start codon"
+                  checked>
+                <label class="form-check-label" for="start codon">
+                  start codon
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="stop codon" name="position" value="stop codon"
+                  checked>
+                <label class="form-check-label" for="stop codon">
+                  stop codon
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label for="inputText" class="col-sm-3 col-form-label">Limit</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" value="-100,100" id="limit_1">
+              <input type="text" class="form-control mt-1" value="-100,100" id="limit_2">
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label for="reference" class="col-sm-3 col-form-label">Reference</label>
+            <div class="col-sm-9">
+              <small class="ps-1">
+                Default:
+                <a href='/sRNAanalyst_static/example/mRNA_WS275_boundary.csv' download>
+                  mRNA_WS275_boundary.csv <i class="bi bi-download"></i>
+                </a>
+              </small>
+              <input class="form-control" type="file" id="reference">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div-->
+
+  <!-- Settings -->
+  <div class="col-md-12 single-data" id="config">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Settings</h5>
+
+        <form class="row g-3 px-3">
+          <!--div class="col-sm-6" style="display:none;">
+            <label class="form-label fw-bold col-form-label-sm mb-0">Active</label>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" id="active" checked>
+            </div>
+          </div-->
+
+          <div class="col-sm-6">
+            <label class="form-label fw-bold col-form-label-sm mb-0">Title (Optional)</label>
+            <input type="text" class="form-control" placeholder="Enter head title here..." value="Start Codon"
+              id="title_1">
+            <input type="text" class="form-control mt-1" placeholder="Enter tail title here..." value="Stop Codon"
+              id="title_2">
+          </div>
+
+          <div class="col-sm-6">
+            <label class="form-label fw-bold col-form-label-sm mb-0">Reference</label>
+            <span class="form-text ms-1">
+              <i class="bi bi-info-circle-fill"></i> Example:
+              <a href="/sRNAanalyst_static/example/mRNA_WS285_boundary.csv" download>
+                mRNA_WS285_boundary.csv <i class="bi bi-download"></i>
+              </a>
+            </span>
+            <div class="input-group">
+              <label type="button" class="btn upload-btn" id="upload-btn">
+                <input type="file" class="hide" id="reference" required>
+                Choose File
+              </label>
+              <div class="input-group-text" id="reference-text" style="background-color: white; border-right:none;">No file chosen</div>
+              <input type="text" class="form-control" style="background-color: white; border-left:none;" disabled>
+            </div>
+            <div class="input-group mt-1">
+              <span class="input-group-text">Start</span>
+              <input type="text" class="form-control" placeholder="Enter limit..." value="-100,100" id="limit_1"
+                required>
+              <span class="input-group-text">Stop</span>
+              <input type="text" class="form-control" placeholder="Enter limit..." value="-100,100" id="limit_2"
+                required>
+            </div>
+          </div>
+
+          {% include 'components/analysis/config/stylesheet-lineplot.html' %}
+        </form>
+
+        <h5 class="card-title">Style</h5>
+        {% include 'components/analysis/config/stylesheet.html' %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Submit -->
+  <div class="col-12 mb-3 position-relative single-data">
+    <button type="button" class="btn submit position-absolute top-50 start-50 translate-middle" id="submit_codon">
+      Submit <i class="bi bi-send"></i>
+    </button>
+    <button type="button" class="btn submit_loading position-absolute top-50 start-50 translate-middle hide"
+      id="submit_loading_codon" disabled>
+      <span class="spinner-border spinner-border-sm" role="status"></span>
+      <span id="loading_time"></span>
+    </button>
+  </div>
+
+  <!-- Result -->
+  <div class="col-12 mt-3 result" id="result_codon">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Result</h5>
+        <small>
+          <span class="d-flex"><b>Dataset:</b><div class="ms-2" id="target_data"></div></span>
+          <div id="target_list_div">
+            <span class="d-flex">
+              <b>Target List:</b><div class="ms-2" id="target_list"></div>
+            </span>
+          </div>
+        </small>
+        <div class="my-2" id="file_block"></div>
+        <div class="row" id="img_block"></div>
+      </div>
+    </div>
+  </div>
+
+</div>

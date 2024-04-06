@@ -1,0 +1,308 @@
+Information:
+  filter: &id001
+  - index: '9'
+    upload: true
+    name: CSR-1_target
+  - index: '8'
+    upload: true
+    name: WAGO-1_target
+  reference1: mRNA_WS285.fa
+  data:
+  - index: 1
+    upload: true
+    name: WAGO1_IP_WT
+  group: *id001
+  reference2: mRNA_WS285_region.csv
+Density:
+  plot: true
+  fig_path: media/example/Density
+  title: associated 22G RNAs
+  data:
+  - dataframe: null
+    index: 1
+    upload: true
+    name: WAGO1_IP_WT
+    path: media/example/WAGO1_IP_WT_region_ALL-UTR5-CDS-UTR3.csv
+  - dataframe: null
+    index: 2
+    upload: true
+    name: WAGO1_IP_PRG1_MUT
+    path: media/example/WAGO1_IP_PRG1_MUT_region_ALL-UTR5-CDS-UTR3.csv
+  filter:
+  - index: '2'
+    upload: true
+    name: WAGO-1_target
+    id: null
+  - index: '3'
+    upload: true
+    name: CSR-1_target
+    id: null
+  columns:
+  - ALL_den
+  - UTR5_den
+  - CDS_den
+  - UTR3_den
+  scale: normal
+  color: coolwarm
+  test_format: simple
+  detail: true
+  merge: false
+  test: U-test
+  segmentation: data
+  style: darkgrid
+  fig_format: png
+  reference: mRNA_WS285_3region.csv
+Metagene:
+  plot: true
+  fig_path: media/example/Metagene
+  title: associated 22G RNAs
+  data:
+  - dataframe: null
+    index: 1
+    upload: true
+    name: WAGO1_IP_WT
+    path: media/example/WAGO1_IP_WT_metagene.csv
+  - dataframe: null
+    index: 2
+    upload: true
+    name: WAGO1_IP_PRG1_MUT
+    path: media/example/WAGO1_IP_PRG1_MUT_metagene.csv
+  filter:
+  - index: '2'
+    upload: true
+    name: WAGO-1_target
+    id: null
+  - index: '3'
+    upload: true
+    name: CSR-1_target
+    id: null
+  merge: false
+  color: deep
+  segmentation: data
+  style: darkgrid
+  fig_format: png
+  reference: mRNA_WS285_length.csv
+Head:
+  plot: true
+  fig_path: media/example/Head
+  title: Head
+  data:
+  - dataframe: null
+    index: 1
+    upload: true
+    name: WAGO1_IP_WT
+    path: media/example/WAGO1_IP_WT_position_head(0-100).csv
+  - dataframe: null
+    index: 2
+    upload: true
+    name: WAGO1_IP_PRG1_MUT
+    path: media/example/WAGO1_IP_PRG1_MUT_position_head(0-100).csv
+  filter:
+  - index: '2'
+    upload: true
+    name: WAGO-1_target
+    id: null
+  - index: '3'
+    upload: true
+    name: CSR-1_target
+    id: null
+  merge: false
+  color: deep
+  segmentation: data
+  title_2: Tail
+  title_1: Head
+  columns:
+  - head
+  - tail
+  fig_format: png
+  style: darkgrid
+  reference: mRNA_WS285_boundary.csv
+Tail:
+  plot: true
+  fig_path: media/example/Tail
+  title: Tail
+  data:
+  - dataframe: null
+    index: 1
+    upload: true
+    name: WAGO1_IP_WT
+    path: media/example/WAGO1_IP_WT_position_tail(-100-0).csv
+  - dataframe: null
+    index: 2
+    upload: true
+    name: WAGO1_IP_PRG1_MUT
+    path: media/example/WAGO1_IP_PRG1_MUT_position_tail(-100-0).csv
+  filter:
+  - index: '2'
+    upload: true
+    name: WAGO-1_target
+    id: null
+  - index: '3'
+    upload: true
+    name: CSR-1_target
+    id: null
+  merge: false
+  color: deep
+  segmentation: data
+  title_2: Tail
+  title_1: Head
+  columns:
+  - head
+  - tail
+  fig_format: png
+  style: darkgrid
+  reference: mRNA_WS285_boundary.csv
+Start_Codon:
+  plot: true
+  fig_path: media/example/Start_Codon
+  title: Start Codon
+  data:
+  - dataframe: null
+    index: 1
+    upload: true
+    name: WAGO1_IP_WT
+    path: media/example/WAGO1_IP_WT_position_start codon(-100-100).csv
+  - dataframe: null
+    index: 2
+    upload: true
+    name: WAGO1_IP_PRG1_MUT
+    path: media/example/WAGO1_IP_PRG1_MUT_position_start codon(-100-100).csv
+  filter:
+  - index: '2'
+    upload: true
+    name: WAGO-1_target
+    id: null
+  - index: '3'
+    upload: true
+    name: CSR-1_target
+    id: null
+  merge: false
+  color: deep
+  segmentation: data
+  title_2: Stop Codon
+  title_1: Start Codon
+  columns:
+  - start codon
+  - stop codon
+  fig_format: png
+  style: darkgrid
+  reference: mRNA_WS285_boundary.csv
+Stop_Codon:
+  plot: true
+  fig_path: media/example/Stop_Codon
+  title: Stop Codon
+  data:
+  - dataframe: null
+    index: 1
+    upload: true
+    name: WAGO1_IP_WT
+    path: media/example/WAGO1_IP_WT_position_stop codon(-100-100).csv
+  - dataframe: null
+    index: 2
+    upload: true
+    name: WAGO1_IP_PRG1_MUT
+    path: media/example/WAGO1_IP_PRG1_MUT_position_stop codon(-100-100).csv
+  filter:
+  - index: '2'
+    upload: true
+    name: WAGO-1_target
+    id: null
+  - index: '3'
+    upload: true
+    name: CSR-1_target
+    id: null
+  merge: false
+  color: deep
+  segmentation: data
+  title_2: Stop Codon
+  title_1: Start Codon
+  columns:
+  - start codon
+  - stop codon
+  fig_format: png
+  style: darkgrid
+  reference: mRNA_WS285_boundary.csv
+Fold_Change:
+  plot: true
+  fig_path: media/example/Fold_Change
+  title: ''
+  data:
+  - dataframe: null
+    index: 2
+    upload: true
+    name: 'WAGO1_IP_PRG1_MUT
+
+      WAGO1_IP_WT'
+    path: media/example/WAGO1_IP_PRG1_MUT_region_ALL-UTR5-CDS-UTR3.csv
+  filter:
+  - index: '2'
+    upload: true
+    name: WAGO-1_target
+    id: null
+  - index: '3'
+    upload: true
+    name: CSR-1_target
+    id: null
+  columns:
+  - ALL_count
+  - UTR5_count
+  - CDS_count
+  - UTR3_count
+  delete_zero: true
+  scale: log2
+  color: coolwarm
+  test_format: simple
+  detail: true
+  merge: false
+  test: U-test
+  segmentation: data
+  style: darkgrid
+  fig_format: png
+  reference: mRNA_WS285_3region.csv
+Scatter:
+  plot: true
+  fig_path: media/example/Scatter
+  title: ''
+  data:
+  - dataframe: null
+    index: 2
+    upload: true
+    name: 'WAGO1_IP_PRG1_MUT
+
+      WAGO1_IP_WT'
+    path: media/example/WAGO1_IP_PRG1_MUT_region_ALL-UTR5-CDS-UTR3.csv
+  filter:
+  - index: '3'
+    upload: true
+    name: CSR-1_target
+    id: null
+  - index: '2'
+    upload: true
+    name: WAGO-1_target
+    id: null
+  columns:
+  - ALL_count
+  - UTR5_count
+  - CDS_count
+  - UTR3_count
+  scale: log2
+  merge: false
+  color: deep
+  segmentation: data
+  style: darkgrid
+  show_others: false
+  fig_format: png
+  BCV: 0.1
+  reference: mRNA_WS285_3region.csv
+Browser:
+  data:
+  - index: 1
+    upload: true
+    name: WAGO1_IP_WT
+  - index: 2
+    upload: true
+    name: WAGO1_IP_PRG1_MUT
+  filter: &id002 []
+  reference2: mRNA_WS285_region.csv
+  reference1: mRNA_WS285.fa
+  group: *id002

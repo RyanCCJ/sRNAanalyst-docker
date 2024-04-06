@@ -1,0 +1,14 @@
+output_dir: ../media/example
+strand: forward
+data: ncRNA_WS285
+factor: ''
+format: fasta
+reference: ''
+rc: false
+input_file: ../media/example/upload/utility/ncRNA_WS285.fasta
+merge: ''
+normalize: ''
+field: biotype=miRNA
+filter: ''
+read: ''
+map: U:T

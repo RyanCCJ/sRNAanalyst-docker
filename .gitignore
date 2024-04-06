@@ -1,0 +1,12 @@
+app/data
+app/media/*
+app/src/toolkit/bowtie*
+app/src/toolkit/FastQC*
+app/src/toolkit/yq
+app/src/toolkit/sratoolkit*
+app/src/toolkit/sRNAanalyst/__pycache__
+app/sRNA_tool/__pycache__
+app/sRNA_tool/migrations/__pycache__
+app/sRNAanalyst/__pycache__
+app/db.sqlite3
+log

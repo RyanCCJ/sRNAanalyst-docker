@@ -1,0 +1,73 @@
+<!-- bowtie2.html -->
+
+<hr class="bowtie2"><b class="bowtie2">Bowtie2</b>
+
+<div class="col-sm-6 bowtie2">
+  <label class="form-label fw-bold col-form-label-sm mb-0">Search</label>
+  <div class="input-group">
+    <select class="form-select" name="search" id="search">
+      <option value="best" selected>Best Alignment</option>
+      <option value="limited">Limited Alignments</option>  
+      <option value="all">All Possible Alignments</option> 
+    </select>
+    <span class="input-group-text limited_align">Number</span>
+    <input type="text" class="form-control limited_align" id="number"  value="2" style="max-width: 4rem;">
+  </div> 
+</div>
+
+<!--div class="col-sm-6 bowtie2">
+  <label class="form-label fw-bold col-form-label-sm mb-0">Strand</label>
+  <select class="form-select" name="strand" id="strand">
+    <option value="norc" selected>Forward Strand</option>
+    <option value="nofw">Reverse-complement Strand</option>
+    <option value="both">Both</option>
+  </select>
+</div-->
+
+<div class="col-sm-6 bowtie2">
+  <label class="form-label fw-bold col-form-label-sm mb-0">Efficiency</label>
+  <select class="form-select" name="efficiency" id="efficiency">
+    <option value="very-fast">Very Fast</option>
+    <option value="fast">Fast</option>
+    <option value="sensitive" selected>Sensitive</option>
+    <option value="very-sensitive">Very Sensitive</option>
+  </select>
+</div>
+
+<div class="col-sm-6 bowtie2">
+  <label class="form-label fw-bold col-form-label-sm mb-0">Boundary</label>
+  <select class="form-select" name="boundary" id="boundary">
+    <option value="end-to-end" selected>End to End</option>
+    <option value="local">Soft Clipped</option>
+  </select>
+</div>
+
+<!--div class="col-sm-6 bowtie2">
+  <label class="form-label fw-bold col-form-label-sm mb-0">Faild to Align</label>
+  <select class="form-select" name="no-align" id="no-align">
+    <option value="show">Show</option>
+    <option value="not-show" selected>Not Show</option>
+  </select>
+</div-->
+
+<!--div class="col-sm-6 bowtie2">
+  <label class="form-label fw-bold col-form-label-sm mb-0">Report</label>
+  <select class="form-select" name="report" id="report">
+    <option value="with-header" selected>With Header</option>
+    <option value="withou-header">Without Header</option>
+  </select>
+</div-->
+
+<div class="col-12 mb-3 bowtie2">
+  <label class="form-label fw-bold col-form-label-sm mb-0" data-bs-toggle="tooltip" data-bs-placement="right"
+    data-bs-html="true"
+    title="Enter arguments that are not provided in the fields, and must follow the original tool's format.<br>Please refer to the link on the right for more information. <br><br>e.g.,  --score-min 'C,0,0'">Extra
+    Arguments (Optional)</label>
+  <span class="form-text ms-1">
+    <i class="bi bi-info-circle-fill"></i> Ref:
+    <a href="https://bowtie-bio.sourceforge.net/bowtie2/manual.shtml" target="_blank">
+      Bowtie2 User Guide <i class="bi bi-box-arrow-up-right"></i>
+    </a>
+  </span>
+  <input type="text" class="form-control" placeholder="enter arguments here..." id="extra_args">
+</div>

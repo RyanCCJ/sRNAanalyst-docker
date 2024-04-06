@@ -1,0 +1,300 @@
+/* Basic */
+:root {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  background: #f6f9ff;
+  color: #444444;
+}
+
+a, .basic-color {
+  color: #4154f1;
+  text-decoration: none;
+}
+
+a:hover, .basic-color:hover {
+  color: #717ff5;
+  text-decoration: none;
+}
+
+.basic-color:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Nunito", sans-serif;
+}
+
+.mono {
+  font-family: monospace;
+}
+
+.upload-btn {
+  background-color: #e9ecef;
+  border: 1px solid #ced4da;
+}
+
+#active-btn:hover {
+  background-color: #ced4da;
+  border: 1px solid #ced4da;
+}
+
+/* Hide */
+.hide, .limited_align, .norm_factor,
+.single-data, .paired-data,
+.run_config, .result, .condition4 {
+  display: none;
+}
+
+/* Main */
+#main {
+  margin-top: 60px;
+  padding: 20px 30px;
+  transition: all 0.3s;
+}
+
+@media (max-width: 1199px) {
+  #main {
+    padding: 20px;
+  }
+}
+
+/* Page Title */
+.pagetitle {
+  margin-bottom: 10px;
+}
+
+.pagetitle h1 {
+  font-size: 24px;
+  margin-bottom: 0;
+  font-weight: 600;
+  color: #012970;
+}
+
+/* Message */
+#message {
+  position: fixed;
+  right: 15px;
+  bottom: 60px;
+  z-index: 99999;
+}
+
+/* Close Button */
+#config-block .btn-close {
+  background-size: 50%;
+  height: auto;
+}
+
+/* Tooltip */
+.tooltip-inner{
+  text-align: left;
+  max-width: 250px;
+  opacity: 0.8;
+}
+.tooltip-arrow{
+  opacity: 0.8;
+}
+.tooltip{
+  font-size: 10px;
+}
+
+/* Back to top button */
+.back-to-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 99999;
+  background: #4154f1;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.4s;
+}
+
+.back-to-top i {
+  font-size: 24px;
+  color: #fff;
+  line-height: 0;
+}
+
+.back-to-top:hover {
+  background: #6776f4;
+  color: #fff;
+}
+
+.back-to-top.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Submit */
+.submit, .download, .add-workflow {
+  background: #4154f1;
+  color: #fff;
+}
+
+.submit:hover, .download:hover, .add-workflow:hover {
+  background: #6776f4;
+  color: #fff;
+}
+
+.submit_loading {
+  background: #6776f4;
+  color: #fff;
+}
+
+/* Error 404 */
+.error-404 {
+  padding: 30px;
+}
+
+.error-404 h1 {
+  font-size: 180px;
+  font-weight: 700;
+  color: #4154f1;
+  margin-bottom: 0;
+  line-height: 150px;
+}
+
+.error-404 h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #012970;
+  margin-bottom: 30px;
+}
+
+.error-404 .btn {
+  background: #51678f;
+  color: #fff;
+  padding: 8px 30px;
+}
+
+.error-404 .btn:hover {
+  background: #3e4f6f;
+}
+
+@media (min-width: 992px) {
+  .error-404 img {
+    max-width: 50%;
+  }
+}
+
+/* Footer */
+.footer {
+  padding: 20px 0;
+  font-size: 14px;
+  transition: all 0.3s;
+  border-top: 1px solid #cddfff;
+}
+
+.footer .copyright {
+  text-align: center;
+  color: #012970;
+}
+
+.footer .credits {
+  padding-top: 5px;
+  text-align: center;
+  font-size: 13px;
+  color: #012970;
+}
+
+/* Tippy */
+.tippy-box[data-theme~='upload'] {
+  background-color: white;
+  color:tomato;
+  border: 1px solid tomato;
+  box-shadow: 3px 3px 6px #828384;
+}
+.tippy-box[data-theme~='upload'][data-placement^='top'] > .tippy-arrow::before {
+  border-top-color: white;
+}
+.tippy-box[data-theme~='upload'][data-placement^='bottom'] > .tippy-arrow::before {
+  border-bottom-color: white;
+}
+
+/* DataTables */
+.btn-secondary {
+  font-size: small;
+  color: #343a40;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: #e9ecef;
+}
+
+.btn-secondary:hover {
+  background: #dee2e6;
+  color: #343a40;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  color: black !important;
+  background: #dee2e6;
+  border: 1px solid #dee2e6;
+}
+
+/* Browser Table */
+#browser th, #browser td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+#browser .align_text {
+  font-family: monospace;
+  white-space: nowrap;
+}
+
+#browser .hint {
+  display: inline-block;
+  border: 1px solid black;
+  vertical-align: middle;
+}
+
+.M {
+  color: black;
+  background-color: #fffc60;
+}
+
+.D {
+  color: black;
+  background-color: #a1c2e4;
+}
+
+.I {
+  color: black;
+  background-color: #B3D186;
+}
+
+.S, .H {
+  color: black;
+  background-color: #FBC880;
+}
+
+.UTR {
+  background-color:#B0B0B0;
+}
+
+.CDS {
+  background-color:#00BB00;
+}
+
+.EXON1 {
+  background-color:#FFFF59;
+}
+
+.EXON2, .SITE_MUT {
+  background-color:#FFBD45;
+}
+
+.SITE {
+  background-color:#3E6D9C;
+}
+
+.RC {
+  background-color:#001253;
+}

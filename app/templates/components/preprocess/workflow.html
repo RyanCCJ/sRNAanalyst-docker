@@ -1,0 +1,428 @@
+<!-- trimming.html -->
+{% load static %}
+
+<div class="row toggle" id="workflow" style="display:none;">
+
+  <div class="pagetitle">
+    <h1>Workflow</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">Preprocess</li>
+        <li class="breadcrumb-item active">Workflow</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- Instruction -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Instruction</h5>
+        <p>
+          This page will provide the entire preprocessing workflow, including quality, length, adapter trimming, and
+          certain methods for normalizing read counts, as well as the way to map to reference data, including various
+          sequence filters and parameter settings.
+        </p>
+        <a href="#" class="fw-bold text-decoration-underline" id="ex_btn">Example: 22G-RNA NGS preprocessing
+          pipeline</a><br>
+        <small class="text-muted mono hide" id="ex">
+          <ul>
+            <li>Upload the fastq file (compressed file recommended).</li>
+            <li>In the trimming step, set the 3' end adapter to "TGGAATTCTCGGGTGCCAAGG" with a 4nt UMI at both ends.
+            </li>
+            <li>During the normalization step, choose to normalize using sRNA abundance, upload the miRNA file, and
+              use the default perfect match setting.</li>
+            <li>In the mapping step, set the filter for sequences starting with 'G' and have an appropriate length
+              (22-23). Upload the mRNA file and use Bowtie2 to align to the reverse-complement strand. You can use
+              default parameters or modify them, such as searching for all possible alignments. The tool will
+              automatically distribute the read-count.</li>
+          </ul>
+        </small>
+        <p class="mt-3">
+          After processing, the system will output results for each step, including <b>FastQC reports</b> before and
+          after trimming, calculated <b>normalization factors</b>, and <b>mapping results</b>. Three files will be
+          provided for download.<br>
+        <ul>
+          <li><b>collapsed.fa:</b> Merge and count duplicate reads from the fastq file, with "|" used as a delimiter
+            recorded in the read id. This file is generated regardless of whether trimming is performed or not.</li>
+          <li><b>mapped.sam:</b> The alignment results done by Bowtie2, available for further analysis.</li>
+          <li><b>filename.csv:</b> Essential field information compiled for downstream analysis on the "analysis page".
+          </li>
+        </ul>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!--div class="col-12" id="no-workflow-warning">
+    <div class="alert alert-warning alert-dismissible fade show mt-3 no-data-alert" role="alert">
+      <i class="bi bi-exclamation-triangle me-1"></i>
+      Please create a new workflow first before starting to configure the details.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div-->
+
+  <!-- Settings -->
+  <div class="col-12" id="config-block">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title me-auto">Settings</h5>
+        <!--div class="d-flex"> 
+          <h5 class="card-title me-auto">Settings</h5>
+          <button type="button" class="btn-close" id="close_workflow"></button>
+        </div-->
+        <p>
+          Upload the file you want to process, which must be in the following formats: <b>fastq (.fastq, .fq)</b>
+          or its compressed version, such as <b>zip (.zip)</b> or <b>gzip (.gz)</b>. Using compressed files can save
+          network bandwidth and further improve efficiency.
+        </p>
+        <!--div class="d-flex align-items-center">
+          <label type="button" class="btn btn-sm submit">
+            <input type="file" class="hide" id="read-upload">
+            Upload File <i class="bi bi-plus-circle"></i>
+          </label>
+          <button type="button" class="btn btn-sm submit hide" id="read-loading" disabled>
+            Upload File <span class="spinner-border spinner-border-sm ms-1 text-white"
+              role="status"></span>
+          </button>
+          <small class="ps-2 pt-1">
+            Example:
+            <a href='/sRNAanalyst_static/example/WAGO1_IP_WT.fq.gz' download>
+              WAGO1_IP_WT.fq.gz <i class="bi bi-download"></i>
+            </a>
+          </small>
+        </div-->
+
+        <div class="ms-3 mb-2">
+          <label type="button" class="btn btn-sm submit" id="input">
+            <input type="file" class="form-control hide" id="input-upload" required>
+            Upload File <i class="bi bi-plus-circle"></i>
+          </label>
+          <button type="button" class="btn btn-sm submit hide" id="input-current">
+            <div class="d-flex align-items-center">
+              <div id="text"></div>
+              <span class="spinner-border spinner-border-sm ms-1 text-white" role="status"></span>
+              <i class="bi bi-x-circle ms-1"></i>
+            </div>
+          </button>
+          <small class="ps-2 pt-1">
+            Example:
+            <a href='/sRNAanalyst_static/example/WAGO1_IP_WT.fq.gz' download>
+              WAGO1_IP_WT.fq.gz <i class="bi bi-download"></i>
+            </a>
+          </small>
+        </div>
+        <div class="alert alert-warning hide mt-3" role="alert">
+          Please upload a file before submitting.
+        </div>
+        <div class="accordion mt-4" id="accordion-workflow">
+
+          <!-- Trimming -->
+          <div class="accordion-item" id="trimming">
+            <div class="accordion-header d-flex">
+              <div class="form-check form-switch type1 px-2"></div>
+              <div class="form-check form-switch type1">
+                <input class="form-check-input fs-6 switch_btn" type="checkbox" role="switch" id="active" checked>
+              </div>
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
+                data-bs-target="#trimming-body">
+                Step 1. Trimming
+              </button>
+            </div>
+            <div class="accordion-collapse collapse" id="trimming-body" data-bs-parent="#accordion-workflow">
+              <div class="accordion-body">
+                <form class="row g-3 px-3">
+                  <!--div class="col-sm-6">
+                    <label class="form-label fw-bold col-form-label-sm mb-0">Raw Read</label>
+                    <span class="form-text ms-1">
+                      <i class="bi bi-info-circle-fill"></i> Example:
+                      <a href="/sRNAanalyst_static/example/WAGO_IP_WT.fq.gz" download>
+                        WAGO_IP_WT.fq.gz <i class="bi bi-download"></i>
+                      </a>
+                    </span>
+                    <input class="form-control" type="file" id="data" required>
+                  </div-->
+                  <div class="col-sm-6">
+                    <label class="form-label fw-bold col-form-label-sm mb-0">Tool</label>
+                    <select class="form-select" name="tool" id="tool">
+                      <option value="cutadapt" selected>Cutadapt</option>
+                      <!--option value="trim_galore">Trim Galore</option-->
+                    </select>
+                  </div>
+                  {% include 'components/preprocess/tool/cutadapt.html' %}
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Normalization -->
+          <div class="accordion-item" id="normalization">
+            <div class="accordion-header d-flex">
+              <div class="form-check form-switch type1 px-2"></div>
+              <div class="form-check form-switch type1">
+                <input class="form-check-input fs-6 switch_btn" type="checkbox" role="switch" id="active" checked>
+              </div>
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
+                data-bs-target="#normalization-body">
+                Step 2. Normalization
+              </button>
+            </div>
+            <div class="accordion-collapse collapse" id="normalization-body" data-bs-parent="#accordion-workflow">
+              <div class="accordion-body">
+                <form class="row g-3 px-3">
+                  <!--div class="col-sm-6 hide" id="show_raw-read">
+                    <label class="form-label fw-bold col-form-label-sm mb-0">Raw Read</label>
+                    <span class="form-text ms-1">
+                      <i class="bi bi-info-circle-fill"></i> Example:
+                      <a href="/sRNAanalyst_static/example/WAGO_IP_WT.fq.gz" download>
+                        WAGO_IP_WT.fq.gz <i class="bi bi-download"></i>
+                      </a>
+                    </span>
+                    <input class="form-control" type="file" id="data" required>
+                  </div-->
+                  <div class="col-sm-6">
+                    <label class="form-label fw-bold col-form-label-sm mb-0">Strategy</label>
+                    <select class="form-select" name="strategy" id="strategy">
+                      <!--option value="No" selected>without Normalization</option-->
+                      <option value="RPM" selected>RPM</option>
+                      <option value="Factor">Factor</option>
+                      <option value="Abundance">sRNA abundance</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6 strategy-factor hide">
+                    <label class="form-label fw-bold col-form-label-sm mb-0">Factor</label>
+                    <input type="text" class="form-control" placeholder="enter normalization factor here..."
+                      id="factor">
+                  </div>
+                  <div class="col-sm-6 strategy-abundance hide">
+                    <label class="form-label fw-bold col-form-label-sm mb-0">sRNA Reference</label>
+                    <span class="form-text ms-1">
+                      <i class="bi bi-info-circle-fill"></i> Example:
+                      <a href="/sRNAanalyst_static/example/miRNA_WS285.fa" download>
+                        miRNA_WS285.fa <i class="bi bi-download"></i>
+                      </a>
+                    </span>
+                    <div class="input-group">
+                      <label type="button" class="btn upload-btn" id="upload-btn">
+                        <input type="file" class="hide" id="reference" required>
+                        Choose File
+                      </label>
+                      <div class="input-group-text" id="reference-text" style="background-color: white; border-right:none;">No file chosen</div>
+                      <input type="text" class="form-control" style="background-color: white; border-left:none;" disabled>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 strategy-abundance hide">
+                    <label class="form-label fw-bold col-form-label-sm mb-0">Tool</label>
+                    <select class="form-select" name="tool" id="tool">
+                      <option value="perfect" selected>Perfect Match</option>
+                      <option value="bowtie2">Bowtie2</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6 strategy-abundance hide">
+                    <label class="form-label fw-bold col-form-label-sm mb-0">Strand</label>
+                    <select class="form-select" name="strand" id="strand">
+                      <option value="forward" selected>Forward Strand</option>
+                      <option value="reverse">Reverse-complement Strand</option>
+                      <option value="both">Both</option>
+                    </select>
+                  </div>
+                  {% include 'components/preprocess/tool/bowtie2.html' %}
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mapping -->
+          <div class="accordion-item" id="mapping">
+            <div class="accordion-header d-flex">
+              <div class="form-check form-switch type1 px-2"></div>
+              <div class="form-check form-switch type1">
+                <input class="form-check-input fs-6 switch_btn" type="checkbox" role="switch" id="active" checked>
+              </div>
+              <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
+                data-bs-target="#mapping-body">
+                Step 3. Mapping
+              </button>
+            </div>
+            <div class="accordion-collapse collapse" id="mapping-body" data-bs-parent="#accordion-workflow">
+              <div class="accordion-body">
+                <form class="row g-3 px-3">
+                  <!--div class="col-sm-6 hide" id="show_raw-read">
+                    <label class="form-label fw-bold col-form-label-sm mb-0">Raw Read</label>
+                    <span class="form-text ms-1">
+                      <i class="bi bi-info-circle-fill"></i> Example:
+                      <a href="/sRNAanalyst_static/example/WAGO_IP_WT.fq.gz" download>
+                        WAGO_IP_WT.fq.gz <i class="bi bi-download"></i>
+                      </a>
+                    </span>
+                    <input class="form-control" type="file" id="data" required>
+                  </div-->
+                  <div class="col-sm-6" id="no_filter">
+                    <label class="form-label fw-bold col-form-label-sm mb-0">Filter</label>
+                    <div class="input-group">
+                      <select class="form-select" name="filter" id="filter">
+                        <option value="no" selected>no Filter</option>
+                        <option value="yes">Yes</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-sm-6 hide" id="show_filter">
+                    <label class="form-label fw-bold col-form-label-sm mb-0">Filter</label>
+                    <div class="input-group">
+                      <select class="form-select" name="filter" id="filter">
+                        <option value="no">no Filter</option>
+                        <option value="yes" selected>Yes</option>
+                      </select>
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        Head
+                      </button>
+                      <ul class="dropdown-menu py-0 px-1" style="min-width: 3rem;">
+                        <li>
+                          <div class="form-check py-1">
+                            <input class="form-check-input" type="checkbox" value="A" id="head_A" checked>
+                            <label class="form-check-label" for="head_A">A</label>
+                          </div>
+                        </li>
+                        <li>
+                          <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                          <div class="form-check py-1">
+                            <input class="form-check-input" type="checkbox" value="U" id="head_U" checked>
+                            <label class="form-check-label" for="head_U">U</label>
+                          </div>
+                        </li>
+                        <li>
+                          <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                          <div class="form-check py-1">
+                            <input class="form-check-input" type="checkbox" value="C" id="head_C" checked>
+                            <label class="form-check-label" for="head_C">C</label>
+                          </div>
+                        </li>
+                        <li>
+                          <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                          <div class="form-check py-1">
+                            <input class="form-check-input" type="checkbox" value="G" id="head_G" checked>
+                            <label class="form-check-label" for="head_G">G</label>
+                          </div>
+                        </li>
+                      </ul>
+                      <input type="text" class="form-control" placeholder="Length..." value="" id="length">
+                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                        Tail
+                      </button>
+                      <ul class="dropdown-menu dropdown-menu-end py-0 px-1" style="min-width: 3rem;">
+                        <li>
+                          <div class="form-check py-1">
+                            <input class="form-check-input" type="checkbox" value="A" id="tail_A" checked>
+                            <label class="form-check-label" for="tail_A">A</label>
+                          </div>
+                        </li>
+                        <li>
+                          <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                          <div class="form-check py-1">
+                            <input class="form-check-input" type="checkbox" value="U" id="tail_U" checked>
+                            <label class="form-check-label" for="tail_U">U</label>
+                          </div>
+                        </li>
+                        <li>
+                          <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                          <div class="form-check py-1">
+                            <input class="form-check-input" type="checkbox" value="C" id="tail_C" checked>
+                            <label class="form-check-label" for="tail_C">C</label>
+                          </div>
+                        </li>
+                        <li>
+                          <hr class="dropdown-divider">
+                        </li>
+                        <li>
+                          <div class="form-check py-1">
+                            <input class="form-check-input" type="checkbox" value="G" id="tail_G" checked>
+                            <label class="form-check-label" for="tail_G">G</label>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label fw-bold col-form-label-sm mb-0">RNA Reference</label>
+                    <span class="form-text ms-1">
+                      <i class="bi bi-info-circle-fill"></i> Example:
+                      <a href="/sRNAanalyst_static/example/mRNA_WS285.fa" download>
+                        mRNA_WS285.fa <i class="bi bi-download"></i>
+                      </a>
+                    </span>
+                    <div class="input-group">
+                      <label type="button" class="btn upload-btn" id="upload-btn">
+                        <input type="file" class="hide" id="reference" required>
+                        Choose File
+                      </label>
+                      <div class="input-group-text" id="reference-text" style="background-color: white; border-right:none;">No file chosen</div>
+                      <input type="text" class="form-control" style="background-color: white; border-left:none;" disabled>
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label fw-bold col-form-label-sm mb-0">Tool</label>
+                    <select class="form-select" name="tool" id="tool">
+                      <option value="perfect">Perfect Match</option>
+                      <option value="bowtie2" selected>Bowtie2</option>
+                    </select>
+                  </div>
+                  <div class="col-sm-6">
+                    <label class="form-label fw-bold col-form-label-sm mb-0">Strand</label>
+                    <select class="form-select" name="strand" id="strand">
+                      <option value="forward" selected>Forward Strand</option>
+                      <option value="reverse">Reverse-complement Strand</option>
+                      <option value="both">Both</option>
+                    </select>
+                  </div>
+                  {% include 'components/preprocess/tool/bowtie2.html' %}
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit -->
+          <div class="py-5 position-relative">
+            <button type="button" class="btn submit position-absolute top-50 start-50 translate-middle"
+              id="submit_workflow">
+              Submit <i class="bi bi-send"></i>
+            </button>
+            <button type="button" class="btn submit_loading position-absolute top-50 start-50 translate-middle hide"
+              id="submit_loading_workflow" disabled>
+              <span class="spinner-border spinner-border-sm" role="status"></span>
+              <span id="loading_time"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <!--nav>
+      <ul class="pagination justify-content-center"></ul>
+    </nav-->
+  </div>
+
+  <!-- Result -->
+  <div class="col-12 mt-3 result" id="result_workflow" style="display:none;">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Result</h5>
+        <div class="mb-2" id="link_block"></div>
+        <div class="mb-2 row" id="img_block"></div>
+        <div class="mb-2" id="factor_block"></div>
+        <div class="mb-2" id="log_block"></div>
+        <div id="file_block"></div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,112 @@
+<!-- lists.html -->
+{% load static %}
+
+<div class="row toggle" id="group" style="display:none;">
+
+  <div class="pagetitle">
+    <h1>Target List</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">Analysis</li>
+        <li class="breadcrumb-item active">Target List</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- Instruction -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Instruction</h5>
+        <p>Upload the list you want to observe for further analysis. Please note that this web tool performs analysis
+          at the <b>transcript level</b>. If your list uses gene names
+          or IDs, you will need to provide the original alignment reference file, and the file
+          should retain its gene annotation. For example, using the WormBase mRNA transcript FASTA file as a
+          reference, please refer to the example below.
+        </p>
+
+        <div class="col-12 mt-1">
+          <label type="button" class="btn btn-sm btn-secondary" id="reference">
+            <input type="file" class="hide" id="reference-upload">
+            Add Reference (Optional) &ensp;<i class="bi bi-plus-circle"></i>
+          </label>
+          <button type="button" class="btn btn-sm btn-secondary hide" id="reference-current">
+            <div class="d-flex align-items-center">
+              <div id="text"></div>
+              <span class="spinner-border spinner-border-sm ms-1 text-white" role="status"></span>
+              <i class="bi bi-x-circle ms-1"></i>
+            </div>
+          </button>
+          <small class="ps-2">
+            Example:
+            <a href='/sRNAanalyst_static/example/mRNA_WS285.fa' download>
+              mRNA_WS285.fa <i class="bi bi-download"></i>
+            </a>
+          </small>
+          <p class="mt-3">If you do not need to perform gene-to-transcript conversion, you can choose not to upload a
+            reference, and the tool will automatically classify your list based on transcripts. If you don't upload
+            any lists, the tool will analyze all target RNA in default.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings -->
+  <div class="col-12" id="single">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Settings</h5>
+        <div class="row">
+          <form class="col-sm-6">
+            <label class="form-label fw-bold col-form-label-sm mb-0">List Name:</label>
+            <input type="text" class="form-control" placeholder="Enter list name here..." id="title" required>
+            <label class="form-label fw-bold col-form-label-sm mb-0">Gene or Transcript List:</label>
+            <textarea class="form-control" id="list" rows="6"
+              placeholder="( Example )&#10;WBGene0001&#10;WBGene0002&#10;2L52.1a.1&#10;2L52.1b.1&#10;..."
+              required></textarea>
+            <button type="button" class="btn btn-sm submit mt-2" id="add">
+              <div class="d-flex align-items-center">
+                Add List <i class="bi bi-plus-circle ms-1"></i>
+                <span class="spinner-border spinner-border-sm ms-1 text-white hide" role="status"></span>
+              </div>
+            </button>
+          </form>
+          <div class="col-sm-5 pt-3">
+            <div class="card p-2 mt-2 my-4" style="border: 1px solid silver;">
+              <span class="d-flex justify-content-center fw-bold">
+                Default: All Target RNA<div class="ms-1 text-success" id="default">(enabled)</div>
+              </span>
+            </div>
+            <div id="new-group-block"></div>
+          </div>
+
+          <p class="col-12 mt-3">
+            Or you can directly upload all the lists in <b>CSV format</b> and then manually select the targets you want
+            to observe.
+          </p>
+
+          <div class="col-sm-6">
+            <img src="/sRNAanalyst_static/img/Format.jpg" class="img-fluid">
+            <div class="d-flex align-items-center">
+              <label type="button" class="btn btn-sm submit" id="upload">
+                <input type="file" class="hide">
+                Upload File <i class="bi bi-plus-circle"></i>
+              </label>
+              <button type="button" class="btn btn-sm submit hide" id="upload_loading" disabled>
+                Upload File <span class="spinner-border spinner-border-sm text-white" role="status"></span>
+              </button>
+              <small class="ps-2">
+                Example:
+                <a href='/sRNAanalyst_static/example/target_lists.csv' download>
+                  target_lists.csv <i class="bi bi-download"></i>
+                </a>
+              </small>
+            </div>
+          </div>
+          
+          <div class="col-sm-5" id="new-group-block2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

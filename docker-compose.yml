@@ -1,0 +1,24 @@
+version: '3'
+services:
+  server:
+    container_name: server-sRNAanalyst
+    build: ./server
+    ports:
+      - 80:80
+    volumes:
+      - app_data:/app
+      - server_log:/var/log/nginx
+    depends_on:
+      - app
+
+  app:
+    container_name: app-sRNAanalyst
+    build: ./app
+    entrypoint: /app/entrypoint.sh
+    command: uwsgi --ini uwsgi.ini
+    volumes:
+      - app_data:/app
+       
+volumes:
+  app_data:
+  server_log:

@@ -1,0 +1,238 @@
+<!-- density.html -->
+{% load static %}
+
+<div class="row toggle" id="density" style="display:none;">
+
+  <div class="pagetitle">
+    <h1>Density</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">Analysis</li>
+        <li class="breadcrumb-item active">Density</li>
+      </ol>
+    </nav>
+  </div>
+
+  <!-- instruction -->
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Density Distribution</h5>
+        <div class="row">
+          <div class="col-md-5">
+            <img src="/sRNAanalyst_static/img/Density.png" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-7">
+            <p>
+              Density Distribution helps observe the distribution of read count density across <b>different datasets</b>,
+              <b>interest lists</b>, and <b>regions</b>, presented in a box plot. You need to input a specific format of 
+              reference CSV file to specify the analysis region coordinates (1-based), with the column name representing the
+              designated region name.
+            </p>
+            <p>
+              For example, to observe the read density across the entire length of each mRNA, you can input an interval
+              named "ALL," including each length (1-N). If you want to compare the distribution of 5'UTR, CDS, and
+              3'UTR, you need to input a file containing information about the coordinates of these three regions.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Warning -->
+  <div class="col-12 single-data-warning">
+    <div class="alert alert-warning alert-dismissible fade show mt-3 no-data-alert" role="alert">
+      <i class="bi bi-exclamation-triangle me-1"></i>
+      Please input a valid data for density analysis.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  </div>
+
+  <!-- Run Config -->
+  <!--div class="col-md-6 run_config" id="run_config">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Running</h5>
+
+        <div class="alert alert-primary alert-dismissible fade show default-data-alert" role="alert" id=""
+          style="display:none;">
+          <i class="bi bi-info-circle me-1"></i>
+          You have selected the default dataset, no need for reanalysis.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div class="alert alert-warning alert-dismissible fade show custom-data-alert" role="alert" id=""
+          style="display:none;">
+          <i class="bi bi-exclamation-triangle me-1"></i>
+          You are using a custom dataset, which requires pre-analysis. If it has already been analyzed, there is no need
+          to re-run the analysis.
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <form>
+          <div class="row mb-3">
+            <label class="col-form-label col-sm-3">Active</label>
+            <div class="col-sm-9 pt-2">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="active">
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label class="col-form-label col-sm-3 mt-3">Regions</label>
+            <div class="col-sm-9">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="ALL" name="region" value="ALL" checked>
+                <label class="form-check-label" for="ALL">
+                  ALL
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="UTR5" name="region" value="UTR5" checked>
+                <label class="form-check-label" for="UTR5">
+                  5'UTR
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="CDS" name="region" value="CDS" checked>
+                <label class="form-check-label" for="CDS">
+                  CDS
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="UTR3" name="region" value="UTR3" checked>
+                <label class="form-check-label" for="UTR3">
+                  3'UTR
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label for="reference" class="col-sm-3 col-form-label">Reference</label>
+            <div class="col-sm-9">
+              <small class="ps-1">
+                Default:
+                <a href='/sRNAanalyst_static/example/mRNA_WS275_3region.csv' download>
+                  mRNA_WS275_3region.csv <i class="bi bi-download"></i>
+                </a>
+              </small>
+              <input class="form-control" type="file" id="reference">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div-->
+
+  <!-- Settings -->
+  <div class="col-md-12 single-data" id="config">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Settings</h5>
+
+        <form class="row g-3 px-3">
+          <!--div class="col-5 row mb-3 hide">
+            <label class="col-form-label col-sm-3">Active</label>
+            <div class="col-sm-9 pt-2">
+              <div class="form-check form-switch">
+                <input class="form-check-input" type="checkbox" id="active" checked>
+              </div>
+            </div>
+          </div-->
+
+          <div class="col-sm-6">
+            <label class="form-label fw-bold col-form-label-sm mb-0">Title (Optional)</label>
+            <input type="text" class="form-control" placeholder="Enter plot title here..." value="" id="title">
+          </div>
+
+          <div class="col-sm-6">
+            <label class="form-label fw-bold col-form-label-sm mb-0">Reference</label>
+            <span class="form-text ms-1">
+              <i class="bi bi-info-circle-fill"></i> Example:
+              <a href="/sRNAanalyst_static/example/mRNA_WS285_3region.csv" download>
+                mRNA_WS285_3region.csv <i class="bi bi-download"></i>
+              </a>
+            </span>
+            <div class="input-group">
+              <label type="button" class="btn upload-btn" id="upload-btn">
+                <input type="file" class="hide" id="reference" required>
+                Choose File
+              </label>
+              <div class="input-group-text" id="reference-text" style="background-color: white; border-right:none;">No file chosen</div>
+              <input type="text" class="form-control" style="background-color: white; border-left:none;" disabled>
+            </div>
+          </div>
+
+          <!--div class="col-7 row mb-3 hide">
+            <label class="col-form-label col-sm-3">Regions</label>
+            <div class="col-sm-9 mt-2">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="ALL" name="region" value="ALL"  checked>
+                <label class="form-check-label" for="ALL">
+                  ALL
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="UTR5" name="region" value="UTR5">
+                <label class="form-check-label" for="UTR5">
+                  5'UTR
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="CDS" name="region" value="CDS">
+                <label class="form-check-label" for="CDS">
+                  CDS
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="UTR3" name="region" value="UTR3">
+                <label class="form-check-label" for="UTR3">
+                  3'UTR
+                </label>
+              </div>
+            </div>
+          </div-->
+
+          {% include 'components/analysis/config/stylesheet-boxplot.html' %}
+        </form>
+        <h5 class="card-title">Style</h5>
+        {% include 'components/analysis/config/stylesheet.html' %}
+      </div>
+    </div>
+  </div>
+
+  <!-- Submit -->
+  <div class="col-12 mb-3 position-relative single-data">
+    <button type="button" class="btn submit position-absolute top-50 start-50 translate-middle" id="submit_density">
+      Submit <i class="bi bi-send"></i>
+    </button>
+    <button type="button" class="btn submit_loading position-absolute top-50 start-50 translate-middle hide"
+      id="submit_loading_density" disabled>
+      <span class="spinner-border spinner-border-sm" role="status"></span>
+      <span id="loading_time"></span>
+    </button>
+  </div>
+
+  <!-- Result -->
+  <div class="col-12 mt-3 result" id="result_density">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Result</h5>
+        <small>
+          <span class="d-flex"><b>Dataset:</b><div class="ms-2" id="target_data"></div></span>
+          <div id="target_list_div">
+            <span class="d-flex">
+              <b>Target List:</b><div class="ms-2" id="target_list"></div>
+            </span>
+          </div>
+        </small>
+        <div class="my-2" id="file_block"></div>
+        <div class="row" id="img_block"></div>
+      </div>
+    </div>
+  </div>
+
+</div>

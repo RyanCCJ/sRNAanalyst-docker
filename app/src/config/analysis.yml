@@ -1,0 +1,23 @@
+run_dict:
+  density: Density
+  metagene: Metagene
+  boundary: Boundary
+  codon: Codon
+  fold: Fold_Change
+  scatter: Scatter
+
+plot_dict:
+  density: [Density]
+  metagene: [Metagene]
+  boundary: [Head, Tail]
+  codon: [Start_Codon, Stop_Codon]
+  fold: [Fold_Change]
+  scatter: [Scatter]
+
+meta_dict:
+  density: _region_
+  metagene: _metagene
+  boundary: _position_
+  codon: _position_
+  fold: _region_
+  scatter: _region_

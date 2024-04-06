@@ -1,0 +1,135 @@
+<!-- tutorial.html -->
+{% load static %}
+
+<div class="row toggle toggle-default" id="tutorial">
+
+  <div class="pagetitle mb-4">
+    <h1>Tutorial</h1>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="card" style="height: 15rem;">
+      <div class="card-body">
+        <h5 class="card-title fs-4">About sRNA Analyst</h5>
+        <ul>
+          <li class="my-1"><a href="#what-is-sRNA-Analyst?" class="fs-5">What is sRNA Analyst?</a></li>
+          <li class="my-1"><a href="#motivation-of-developing-sRNA-Analyst" class="fs-5">Motivation of developing sRNA
+              Analyst</a></li>
+          <li class="my-1"><a href="#impact-of-sRNA-Analyst" class="fs-5">Impact of sRNA Analyst</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="card" style="height: 15rem;">
+      <div class="card-body">
+        <h5 class="card-title fs-4">Using sRNA Analyst</h5>
+        <ul>
+          <li class="my-1"><a href="#Quick-Start" class="fs-5">Quick Start</a></li>
+          <li class="my-1"><a href="#Preprocess-Page" class="fs-5">Preprocess Page</a></li>
+          <li class="my-1"><a href="#Analysis-Page" class="fs-5">Analysis Page</a></li>
+          <li class="my-1"><a href="#Database-Page" class="fs-5">Database Page</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12" id="what-is-sRNA-Analyst?">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">What is sRNA Analyst?</h5>
+        <p>sRNA Analyst is an pipeline analysis tool optimized for sRNA-seq data, including a complete
+          data preprocessing workflow, downstream analysis tools, and a collection of sRNA references and
+          experimental datasets.</p>
+        <div class="row">
+          <div class="col-md-5">
+            <img src="/sRNAanalyst_static/img/Browser.png" class="img-fluid rounded-start pt-1">
+          </div>
+          <div class="col-md-7">
+            <ul>
+              <li class="my-1">The preprocessing tools currently offer a basic workflow for small RNA, including adapter
+                trimming, quality control, length filtering, normalization, and reference alignment. It provides
+                additional helper tools for processing reference files or converting a SAM/BAM file to CSV format for
+                downstream analysis.</li>
+              <li class="my-1">The downstream analysis tools include Transcriptome Browser, Metagene, Region Density
+                Distribution, Position (head/tail/start codon/stop codon) Readcount Distribution, Fold-change, and
+                Scatter Plot, assisting in observing the distribution of small RNA on specific target RNA under
+                different
+                datasets.</li>
+              <li class="my-1">The database contains experimental datasets primarily focused on C.elegans, along with
+                common model organism miRNA, mRNA references, and partial target gene lists of worm, including Soma
+                target, Germline target, WAGO and CSR-1 target.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12" id="motivation-of-developing-sRNA-Analyst">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Motivation of developing sRNA Analyst</h5>
+        <p>Up to the present, there have been numerous pipeline analysis tools for small RNA, with a predominant focus
+          on analyzing miRNA and piRNA. However, there is a lack of web-based tools capable of rapidly generating
+          analyses such as metagene profiles, region density, or position distributions. Moreover, there is a scarcity
+          of tools that can independently handle both data preprocessing and downstream analysis. Therefore, we
+          developed a tool to assist biologists to swiftly perform data preprocessing, RNA profiling, identify
+          differentially expressed transcripts, or independently conduct other functional analyses directly from
+          experimental FASTQ or SAM/BAM files.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12" id="impact-of-sRNA-Analyst">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Impact of sRNA Analyst</h5>
+        <p>sRNA Analyst is the first web-based analysis tool capable of examining small RNA metagene profiles, region
+          density, and position distributions. It provides a user-friendly interface that allows users to click and
+          perform data preprocessing for sRNA-seq or use other pipelines that can output SAM/BAM files. With just the
+          provision of an intermediate CSV file, users can conduct downstream functional analyses anytime, anywhere.
+          This enables the observation of sRNA abundance, differential expression, or the examination of distribution
+          and fold-change variations at the transcript level for specific target lists across different datasets.</p>
+      </div>
+      <img src="/sRNAanalyst_static/img/workflow.png" class="mx-auto w-75">
+      <div class="row px-5 py-3">
+        <div class="col-md-3"><img src="/sRNAanalyst_static/img/Metagene.png" class="img-fluid"></div>
+        <div class="col-md-3"><img src="/sRNAanalyst_static/img/Stop_Codon.png" class="img-fluid"></div>
+        <div class="col-md-3"><img src="/sRNAanalyst_static/img/Fold_Change.png" class="img-fluid"></div>
+        <div class="col-md-3"><img src="/sRNAanalyst_static/img/Scatter.png" class="img-fluid"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12" id="Quick-Start">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Quick Start</h5>
+        <ul>
+          <li class="my-1">Navigate to the "Preprocess Page," choose the workflow in the "Toolbox," and upload your
+            compressed FASTQ file in the settings. Then, individually select your desired parameters for Trimming,
+            Normalization, and Mapping. Once configured, click "Submit" and wait a few minutes until the results appear.
+          </li>
+          <img src="/sRNAanalyst_static/img/demo1.png" class="mx-auto w-75 img-thumbnail mb-3">
+          <li class="my-1">Download the final CSV file. After entering the "Analysis Page," select "Input > Dataset" and
+            upload the CSV file based on your requirements for single or paired data. Choose "Input > Target List" and
+            upload the target transcript list for analysis, or use the default "All Target RNA."</li>
+          <img src="/sRNAanalyst_static/img/demo2.png" class="mx-auto w-50 img-thumbnail mb-2">
+          <img src="/sRNAanalyst_static/img/demo3.png" class="mx-auto w-75 img-thumbnail mb-3">
+          <li class="my-1">Click on various tools in the "Toolbox" on the "Analysis Page" and configure them as needed.
+            You may need to upload target RNA references or other files. Once configured, click "Submit" and wait a few
+            minutes until the results appear.</li>
+          <img src="/sRNAanalyst_static/img/demo4.png" class="mx-auto w-75 img-thumbnail mb-3">
+          <p><b>Note:</b> You can load examples to observe results, or download data from the database for personal use.
+            To review the analysis results, you can input the User ID from that session to load all settings and
+            outcomes. All records will be stored on the server for 3 days unless updated.</p>
+          <img src="/sRNAanalyst_static/img/demo5.png" class="mx-auto w-50 img-thumbnail mb-3">
+          <img src="/sRNAanalyst_static/img/demo6.png" class="mx-auto w-75 img-thumbnail mb-3">
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</div>
