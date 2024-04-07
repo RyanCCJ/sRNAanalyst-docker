@@ -9,7 +9,7 @@ A dockerized version of sRNAanalyst web tool. To see the original project, pleas
 
 1. **Install Docker:**
 
-<img src="app/static/img/docker.png" />
+<img src="app/static/img/docker.png" width=150 />
 
 - For `Windows` platform, please check the [document](https://docs.docker.com/desktop/install/windows-install/).
 - For `Mac` platform, please check the [document](https://docs.docker.com/desktop/install/mac-install/).
