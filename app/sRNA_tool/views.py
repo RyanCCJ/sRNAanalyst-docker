@@ -22,7 +22,7 @@ def index(request):
         if os.path.isdir(BASE_DIR+'/media/'+JOB_ID):
             continue
         else:
-            print("[sRNA Analyst] New User ID: {}".format(JOB_ID))
+            print("[sRNA Analyst] User ID Login: {}".format(JOB_ID))
             break
     
     database = analyzer.read_config(BASE_DIR + '/src/config/database.yml')
@@ -130,7 +130,7 @@ def job_id(request, id, type=None, tool=None):
             
             if type=='preprocess':
                 if tool=='all':
-                    print("[sRNA Analyst] Login User ID: {}".format(id))
+                    print("[sRNA Analyst] User ID Login: {}".format(id))
                     path = {}
                     for tool in pre_tools:
                         path[tool] = analyzer.get_preprocess(tool, id)
@@ -140,7 +140,7 @@ def job_id(request, id, type=None, tool=None):
             
             elif type=='analysis':
                 if tool=='all':
-                    print("[sRNA Analyst] Login User ID: {}".format(id))
+                    print("[sRNA Analyst] User ID Login: {}".format(id))
                     path = {}
                     # load data
                     data_config = os.path.join(JOB_dir, 'data.yml')
