@@ -14,7 +14,6 @@ services:
   app:
     container_name: app-sRNAanalyst
     build: ./app
-    entrypoint: /app/entrypoint.sh
     command: uwsgi --ini uwsgi.ini
     volumes:
       - app_data:/app

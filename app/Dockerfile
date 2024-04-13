@@ -33,8 +33,6 @@ RUN set -xe \
     # yq
     && wget ${yq} -O yq \
     && mv yq src/toolkit/ \
-    && chmod +x src/toolkit/yq \
-    # Entry Point
-    && chmod +x entrypoint.sh
+    && chmod +x src/toolkit/yq
 
 CMD [ "python", "manage.py", "runserver", "0.0.0.0:8000" ]

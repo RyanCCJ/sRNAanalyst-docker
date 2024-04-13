@@ -132,4 +132,187 @@
     </div>
   </div>
 
+  <div class="col-12" id="Preprocess-Page">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Preprocess Page</h5>
+        <p>
+          The Preprocess page includes two tools: <b>Workflow</b> and <b>Helper Tool</b>. Workflow facilitates common
+          preprocessing steps for NGS data, including adapter trimming, quality control, length filtering,
+          normalization, and reference alignment. The Helper Tool provides eight data processing functions for
+          individual files, commonly used for tasks such as converting SAM/BAM to CSV files or handling reference
+          files, such as converting ncRNA to miRNA.
+        </p>
+        <p>The Workflow output includes:</p>
+        <ul>
+          <li class="my-1">
+            Reports before and after FastQC, along with quality box-plots for each position, aiding in assessing whether
+            trimming results meet expectations.
+          </li>
+          <li class="my-1">
+            Normalization Factor
+          </li>
+          <li class="my-1">
+            De-duplicated file <b>[data]_collapse.fa</b>
+          </li>
+          <li class="my-1">
+            Bowtie2 alignment results, including alignment ratios, site and read-count quantities, and
+            <b>[data]_mapped.sam</b>
+          </li>
+          <li class="my-1">
+            Organized alignment results <b>[data].csv</b>, suitable as dataset for downstream analysis
+          </li>
+        </ul>
+        <p>
+          The Helper Tool includes functions such as file conversion, ID tag detection, nucleotide conversion, reverse
+          complement, head/tail or length filtering, collapsing, read-count distribution or normalization, and column
+          merging from different files. Processed files will have the suffix "_preprocess" appended to the filename.
+        </p>
+        <p>For detailed usage instructions, hover over the tool options or refer to examples.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12" id="Analysis-Page">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Analysis Page</h5>
+        <p>
+          The Analysis page includes seven analytical functionalities, requiring users to specify the <b>Dataset</b> and
+          the
+          <b>Target List</b> of interest to activate them.
+        </p>
+        <ul>
+          <li class="my-1">
+            <b>Browser:</b> Visualizes read-reference alignment results, with users providing a target RNA reference for
+            comparison. Users can further define specific regions of interest (e.g., UTR, CDS, exon, intron). Analysis
+            results include table view and graphical view, allowing for detailed examination of small RNA binding sites,
+            read-count distribution, and alignment details on specific target RNAs.
+            <br>
+            <img src="/sRNAanalyst_static/img/Browser.png" class="mx-auto w-50 my-3">
+          </li>
+        </ul>
+        <ul>
+          <li class="my-1">
+            <b>Density:</b> Compares read-count density among different datasets, target lists, or regions (e.g., 5'UTR,
+            CDS,
+            3'UTR) using box plots. This is useful for observing binding trends of small RNAs across different targets,
+            supplemented with statistical tests (including T-test and U-test).
+            <br>
+            <img src="/sRNAanalyst_static/example/job/analysis/Density_0.png" class="mx-auto w-75 my-3">
+          </li>
+        </ul>
+        <ul>
+          <li class="my-1">
+            <b>Metagene:</b> Presents overall binding trends in different datasets and target lists via line graphs.
+            Dividing the
+            target RNA into 100%, this visualization observes the distribution of sRNA read-counts and binding ratios.
+            For
+            example, it can assess whether CSR-1 targets preferentially bind near the 3' end compared to WAGO targets in
+            PRG-1 mutant.
+            <br>
+            <div class="row my-3">
+              <div class="col-md-5">
+                <img src="/sRNAanalyst_static/example/job/analysis/Metagene_1.png" class="img-fluid rounded-start">
+              </div>
+            </div>
+          </li>
+        </ul>
+        <ul>
+          <li class="my-1">
+            <b>Head & Tail:</b> Displays read-count distribution near the head and tail within a specific distance via
+            line
+            graphs, allowing for comparisons among different datasets or target lists.
+            <br>
+            <div class="row my-3">
+              <div class="col-md-5">
+                <img src="/sRNAanalyst_static/img/Head.png" class="img-fluid rounded-start">
+              </div>
+              <div class="col-md-5">
+                <img src="/sRNAanalyst_static/img/Tail.png" class="img-fluid rounded-start">
+              </div>
+            </div>
+          </li>
+        </ul>
+        <ul>
+          <li class="my-1">
+            <b>Start & Stop Codon:</b> Shows read-count distribution near the start and stop codons within a specific
+            distance
+            via line graphs, facilitating comparisons among different datasets or target lists.
+            <br>
+            <div class="row my-3">
+              <div class="col-md-5">
+                <img src="/sRNAanalyst_static/img/Start_Codon.png" class="img-fluid rounded-start">
+              </div>
+              <div class="col-md-5">
+                <img src="/sRNAanalyst_static/img/Stop_Codon.png" class="img-fluid rounded-start">
+              </div>
+            </div>
+          </li>
+        </ul>
+        <ul>
+          <li class="my-1">
+            <b>Fold Change:</b> Compares fold-changes in sRNA read-counts binding to target RNAs between paired
+            datasets,
+            enabling
+            further comparison among different target lists or regions.
+            <br>
+            <img src="/sRNAanalyst_static/example/job/analysis/Fold_Change_0.png" class="mx-auto w-75 my-3">
+          </li>
+        </ul>
+        <ul>
+          <li class="my-1">
+            <b>Scatter Plot:</b> Similar to Fold Change, but presented as scatter plots. This visualization can further
+            annotate
+            target RNAs with a p-value using statistical markers.
+            <br>
+            <img src="/sRNAanalyst_static/example/job/analysis/Scatter_0.png" class="mx-auto w-75 my-3">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12" id="Database-Page">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Database Page</h5>
+        <p>
+          The Database page allows users to access common literature data, primarily focusing on <i class="fw-bold">C.elegans</i> at present.
+          Clicking on individual data fields enables users to download or view detailed information and external links,
+          aiding in swiftly comparing their research findings with literature data.
+        </p>
+        <ul>
+          <li class="my-1">
+            <b>Dataset:</b> Compressed files containing NGS data such as WAGO-1 IP, HRDE-1 IP, CSR-1 IP, PRG-1 CLASH, ALG-1 iCLIP, etc.
+          </li>
+        </ul>
+        <ul>
+          <li class="my-1">
+            <b>Reference:</b> Includes miRNAs from <i>C.elegans, Homo sapiens, Mus musculus, Drosophila melanogaster</i>, as well as some mRNA and ncRNA.
+          </li>
+        </ul>
+        <ul>
+          <li class="my-1">
+            <b>Target List:</b> Based on the WormBase WS285 version for <i>C.elegans</i>, comprising all mRNAs, WAGO-1 targets, CSR-1 targets, Germline targets, Germline-enriched targets, and Somatic targets.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12" id="Source-Code">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Source Code</h5>
+        <p>
+          You can download the source code for the <b>Command Line tool</b> from here: <a href="https://github.com/RyanCCJ/sRNAanalyst" target="_blank">https://github.com/RyanCCJ/sRNAanalyst</a>
+        </p>
+        <p>
+          If you prefer to use the <b>Docker version</b>, you can download it from here: <a href="https://github.com/RyanCCJ/sRNAanalyst-docker" target="_blank">https://github.com/RyanCCJ/sRNAanalyst-docker</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
 </div>

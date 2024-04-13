@@ -80,7 +80,7 @@ def HCL_list(request, list):
 
 
 # RESTful API for job ID
-def job_id(request, id, type=None, tool=None):
+def api(request, id, type=None, tool=None):
 
     def _data_config(id):
         if id=='HCL':
