@@ -77,9 +77,8 @@ $ docker logs --timestamps <Container ID> 2>&1 | grep "User ID"
 
 - If the performance of Docker is too low, it may result in the analysis not being completed within the default connection time (10 min). In such a case, the frontend and backend of the web application will temporarily disconnect, but the backend will continue to execute the analysis program. Once the execution is completed, reloading the User ID will fetch the analysis results. If you wish to modify the connection time, you can adjust the relevant settings in `server/site.conf` and `app/uwsgi.ini`.
 
-- If the memory space of Docker is too small, it may lead to unexpected termination (Out Of Memory Killed), resulting in blank output files. You can adjust the Docker settings accordingly. It is recommended to have the memory plus swap size at least twice the size of the input NGS data after decompression.
-
-<img src="app/static/img/resources.png" width='600'/>
+- If the memory space of Docker is too small, it may lead to unexpected termination (Out Of Memory Killed), resulting in blank output files. You can adjust the Docker settings accordingly. It is recommended to have the memory plus swap size at least twice the size of the input NGS data after decompression.  
+    <img src="app/static/img/resources.png" width='600'/>
 
 ### Manage Disk Space:
 
